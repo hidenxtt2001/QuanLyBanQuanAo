@@ -5,6 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyBanQuanAo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="790.092" Width="1134.191">
+
+    <Grid>
+        <TabControl FontSize="16" FontWeight="Bold">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="#A1ABB4" CornerRadius="4,4,0,0" Margin="0,0">
+                                    <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="#899097" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Border" Property="Background" Value="#A1ABB4" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="Menu" >
+                <StackPanel Background="Aqua">
+
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Phiếu TTKH">
+                <StackPanel Background="Blue">
+
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Phiếu TTSP">
+                <StackPanel Background="Brown">
+
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Hoá Đơn">
+                <StackPanel Background="Azure">
+
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Phiếu Chi">
+                <StackPanel Background="CadetBlue">
+
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Thống Kê Doanh Thu">
+                <StackPanel Background="Chocolate">
+
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
 </Window>
