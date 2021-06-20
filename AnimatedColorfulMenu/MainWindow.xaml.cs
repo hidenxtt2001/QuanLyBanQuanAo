@@ -13,10 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace QuanLyBanQuanAo
+namespace AnimatedColorfulMenu
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interação lógica para MainWindow.xam
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -24,5 +24,15 @@ namespace QuanLyBanQuanAo
         {
             InitializeComponent();
         }
+
+        private void Appbar(object sender, MouseButtonEventArgs e)
+        {
+            if (e.MouseDevice.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+        }
+
+       
     }
 }

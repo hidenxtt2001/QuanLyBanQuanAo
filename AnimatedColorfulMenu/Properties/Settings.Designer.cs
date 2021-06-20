@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace QuanLyBanQuanAo.Properties
+namespace AnimatedColorfulMenu.Properties
 {
 
 
