@@ -33,6 +33,35 @@ namespace AnimatedColorfulMenu
             }
         }
 
-       
+        private void Navbar_Selected(object sender, RoutedEventArgs e)
+        {
+            switch (((ListViewItem)sender).Tag.ToString())
+            {
+                case "main":
+                    formPanel.SelectedIndex = 0;
+
+                    break;
+                case "customer":
+                    formPanel.SelectedIndex = 1;
+                    break;
+                case "product":
+                    formPanel.SelectedIndex = 2;
+                    break;
+                case "bill":
+                    formPanel.SelectedIndex = 3;
+                    break;
+                case "payment":
+                    formPanel.SelectedIndex = 4;
+                    break;
+                case "statistics":
+                    formPanel.SelectedIndex = 5;
+                    break;
+            }
+        }
+
+        private void CloseForm_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

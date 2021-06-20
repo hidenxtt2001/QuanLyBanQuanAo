@@ -64,22 +64,51 @@
                 <RowDefinition Height="30" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <StackPanel MouseDown="Appbar"
-                        Background="Transparent">
+            <DockPanel MouseDown="Appbar"
+                       Background="Transparent">
                 <Button x:Name="ButtonOpen"
                         Width="30"
                         Height="30"
                         Padding="0"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
+                        VerticalAlignment="Center"
                         Background="{x:Null}"
                         BorderBrush="{x:Null}"
                         Grid.Row="0">
                     <materialDesign:PackIcon Foreground="#FF313131"
                                              Kind="Menu" />
                 </Button>
-            </StackPanel>
+                <Button x:Name="CloseForm"
+                        Width="30"
+                        Height="30"
+                        Padding="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        Grid.Row="0"
+                        Click="CloseForm_Click">
+                    <materialDesign:PackIcon Foreground="#FF313131"
+                                             Kind="Close" />
+                </Button>
+            </DockPanel>
+            <TabControl Grid.Row="1"
+                        x:Name="formPanel"
+                        BorderThickness="0">
+                <!--<TabControl.ItemContainerStyle>
+                    <Style TargetType="{x:Type TabItem}">
+                        <Setter Property="Visibility"
+                                Value="Collapsed" />
+                    </Style>
+                </TabControl.ItemContainerStyle>-->
+                <TabItem x:Name="main"></TabItem>
+                <TabItem x:Name="customer"></TabItem>
+                <TabItem x:Name="product"></TabItem>
+                <TabItem x:Name="bill"></TabItem>
+                <TabItem x:Name="payment"></TabItem>
+                <TabItem x:Name="statistics"></TabItem>
 
+            </TabControl>
         </Grid>
 
 
@@ -87,7 +116,7 @@
               Width="250"
               Margin="-250,0,0,0"
               HorizontalAlignment="Left"
-              Background="White"
+              Background="BlanchedAlmond"
               RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
                 <TransformGroup>
@@ -100,13 +129,15 @@
             <StackPanel>
                 <Image Height="140"
                        Source="Assets/school-bag.png"
-                       Stretch="Fill" />
+                       Stretch="Uniform" />
                 <ListView FontFamily="Champagne &amp; Limousines"
                           FontSize="18"
-                          Foreground="#FF313131">
+                          Foreground="#FF313131"
+                          Tag="main">
                     <ListViewItem Height="45"
                                   Padding="0"
-                                  Tag="main">
+                                  Tag="main"
+                                  Selected="Navbar_Selected">
                         <StackPanel Margin="10,0"
                                     Orientation="Horizontal">
                             <materialDesign:PackIcon Width="20"
@@ -120,7 +151,9 @@
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="45"
-                                  Padding="0">
+                                  Padding="0"
+                                  Selected="Navbar_Selected"
+                                  Tag="customer">
                         <StackPanel Margin="10,0"
                                     Orientation="Horizontal">
                             <materialDesign:PackIcon Width="20"
@@ -134,7 +167,9 @@
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="45"
-                                  Padding="0">
+                                  Padding="0"
+                                  Selected="Navbar_Selected"
+                                  Tag="product">
                         <StackPanel Margin="10,0"
                                     Orientation="Horizontal">
                             <materialDesign:PackIcon Width="20"
@@ -148,7 +183,9 @@
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="45"
-                                  Padding="0">
+                                  Padding="0"
+                                  Selected="Navbar_Selected"
+                                  Tag="bill">
                         <StackPanel Margin="10,0"
                                     Orientation="Horizontal">
                             <materialDesign:PackIcon Width="20"
@@ -162,7 +199,9 @@
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="45"
-                                  Padding="0">
+                                  Padding="0"
+                                  Selected="Navbar_Selected"
+                                  Tag="payment">
                         <StackPanel Margin="10,0"
                                     Orientation="Horizontal">
                             <materialDesign:PackIcon Width="20"
@@ -176,7 +215,9 @@
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="45"
-                                  Padding="0">
+                                  Padding="0"
+                                  Selected="Navbar_Selected"
+                                  Tag="statistics">
                         <StackPanel Margin="10,0"
                                     Orientation="Horizontal">
                             <materialDesign:PackIcon Width="20"
@@ -199,7 +240,8 @@
                     VerticalAlignment="Top"
                     Background="{x:Null}"
                     BorderBrush="{x:Null}">
-                <materialDesign:PackIcon Kind="Close" Foreground="Black" />
+                <materialDesign:PackIcon Kind="Close"
+                                         Foreground="Black" />
             </Button>
         </Grid>
     </Grid>
