@@ -5,80 +5,162 @@
         xmlns:local="clr-namespace:AnimatedColorfulMenu"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        Width="1080"
-        Height="600"
+        Width="1500"
+        Height="800"
+        MinWidth="1500"
+        MinHeight="800"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         mc:Ignorable="d">
     <Window.Resources>
-        <Storyboard x:Key="CloseMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="GridMenu"
-                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
-                <EasingDoubleKeyFrame KeyTime="0"
-                                      Value="250" />
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5"
-                                      Value="0" />
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="GridBackground"
-                                           Storyboard.TargetProperty="(UIElement.Opacity)">
-                <EasingDoubleKeyFrame KeyTime="0"
-                                      Value="1" />
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5"
-                                      Value="0" />
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="OpenMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="GridMenu"
-                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
-                <EasingDoubleKeyFrame KeyTime="0"
-                                      Value="0" />
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2"
-                                      Value="250" />
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="GridBackground"
-                                           Storyboard.TargetProperty="(UIElement.Opacity)">
-                <EasingDoubleKeyFrame KeyTime="0"
-                                      Value="0" />
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2"
-                                      Value="1" />
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
+        <ResourceDictionary>
+            <Style x:Key="ScrollThumbs"
+                   TargetType="{x:Type Thumb}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Grid x:Name="Grid">
+                                <Rectangle Width="Auto"
+                                           Height="Auto"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Stretch"
+                                           Fill="Transparent" />
+                                <Border x:Name="Rectangle1"
+                                        Width="Auto"
+                                        Height="Auto"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="10 0 0 10" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="Tag"
+                                         Value="Horizontal">
+                                    <Setter TargetName="Rectangle1"
+                                            Property="Width"
+                                            Value="Auto" />
+                                    <Setter TargetName="Rectangle1"
+                                            Property="Height"
+                                            Value="7" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!--  SCROLLBARS  -->
+            <Style x:Key="{x:Type ScrollBar}"
+                   TargetType="{x:Type ScrollBar}">
+                <Setter Property="Stylus.IsFlicksEnabled"
+                        Value="False" />
+                <Setter Property="Foreground"
+                        Value="BlanchedAlmond" />
+                <Setter Property="Background"
+                        Value="DarkGray" />
+                <Setter Property="Width"
+                        Value="10" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ScrollBar}">
+                            <Grid x:Name="GridRoot"
+                                  Width="10"
+                                  Background="{x:Null}">
+                                <Track x:Name="PART_Track"
+                                       Grid.Row="0"
+                                       Focusable="False"
+                                       IsDirectionReversed="true">
+                                    <Track.Thumb>
+                                        <Thumb x:Name="Thumb"
+                                               Background="{TemplateBinding Foreground}"
+                                               Style="{DynamicResource ScrollThumbs}" />
+                                    </Track.Thumb>
+                                    <Track.IncreaseRepeatButton>
+                                        <RepeatButton x:Name="PageUp"
+                                                      Command="ScrollBar.PageDownCommand"
+                                                      Focusable="False"
+                                                      Opacity="0" />
+                                    </Track.IncreaseRepeatButton>
+                                    <Track.DecreaseRepeatButton>
+                                        <RepeatButton x:Name="PageDown"
+                                                      Command="ScrollBar.PageUpCommand"
+                                                      Focusable="False"
+                                                      Opacity="0" />
+                                    </Track.DecreaseRepeatButton>
+                                </Track>
+                            </Grid>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger SourceName="Thumb"
+                                         Property="IsMouseOver"
+                                         Value="true">
+                                    <Setter TargetName="Thumb"
+                                            Property="Background"
+                                            Value="{DynamicResource ButtonSelectBrush}" />
+                                </Trigger>
+                                <Trigger SourceName="Thumb"
+                                         Property="IsDragging"
+                                         Value="true">
+                                    <Setter TargetName="Thumb"
+                                            Property="Background"
+                                            Value="{DynamicResource DarkBrush}" />
+                                </Trigger>
+
+                                <Trigger Property="IsEnabled"
+                                         Value="false">
+                                    <Setter TargetName="Thumb"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                </Trigger>
+                                <Trigger Property="Orientation"
+                                         Value="Horizontal">
+                                    <Setter TargetName="GridRoot"
+                                            Property="LayoutTransform">
+                                        <Setter.Value>
+                                            <RotateTransform Angle="-90" />
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter TargetName="PART_Track"
+                                            Property="LayoutTransform">
+                                        <Setter.Value>
+                                            <RotateTransform Angle="-90" />
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Width"
+                                            Value="Auto" />
+                                    <Setter Property="Height"
+                                            Value="12" />
+                                    <Setter TargetName="Thumb"
+                                            Property="Tag"
+                                            Value="Horizontal" />
+                                    <Setter TargetName="PageDown"
+                                            Property="Command"
+                                            Value="ScrollBar.PageLeftCommand" />
+                                    <Setter TargetName="PageUp"
+                                            Property="Command"
+                                            Value="ScrollBar.PageRightCommand" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
     </Window.Resources>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="ButtonBase.Click"
-                      SourceName="ButtonClose">
-            <BeginStoryboard x:Name="CloseMenu_BeginStoryboard"
-                             Storyboard="{StaticResource CloseMenu}" />
-        </EventTrigger>
-        <EventTrigger RoutedEvent="ButtonBase.Click"
-                      SourceName="ButtonOpen">
-            <BeginStoryboard Storyboard="{StaticResource OpenMenu}" />
-        </EventTrigger>
-    </Window.Triggers>
     <Grid>
-        <Grid x:Name="GridBackground"
-              Background="#55313131"
-              Opacity="0" />
-        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <DockPanel MouseDown="Appbar"
-                       Background="Transparent">
-                <Button x:Name="ButtonOpen"
-                        Width="30"
-                        Height="30"
-                        Padding="0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Background="{x:Null}"
-                        BorderBrush="{x:Null}"
-                        Grid.Row="0">
-                    <materialDesign:PackIcon Foreground="#FF313131"
-                                             Kind="Menu" />
-                </Button>
+            <DockPanel Background="Transparent"
+                       MouseDown="Appbar">
                 <Button x:Name="CloseForm"
+                        Grid.Row="0"
                         Width="30"
                         Height="30"
                         Padding="0"
@@ -86,14 +168,13 @@
                         VerticalAlignment="Center"
                         Background="{x:Null}"
                         BorderBrush="{x:Null}"
-                        Grid.Row="0"
                         Click="CloseForm_Click">
                     <materialDesign:PackIcon Foreground="#FF313131"
                                              Kind="Close" />
                 </Button>
             </DockPanel>
-            <TabControl Grid.Row="1"
-                        x:Name="formPanel"
+            <TabControl x:Name="formPanel"
+                        Grid.Row="1"
                         BorderThickness="0">
                 <!--<TabControl.ItemContainerStyle>
                     <Style TargetType="{x:Type TabItem}">
@@ -101,22 +182,44 @@
                                 Value="Collapsed" />
                     </Style>
                 </TabControl.ItemContainerStyle>-->
-                <TabItem x:Name="main"></TabItem>
-                <TabItem x:Name="customer"></TabItem>
-                <TabItem x:Name="product"></TabItem>
-                <TabItem x:Name="bill"></TabItem>
-                <TabItem x:Name="payment"></TabItem>
-                <TabItem x:Name="statistics"></TabItem>
+                <TabItem x:Name="main">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="400" />
+
+                        </Grid.ColumnDefinitions>
+                        <ScrollViewer Grid.Column="0"
+                                      VerticalScrollBarVisibility="Auto">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Margin="10"
+                                           FontSize="25"
+                                           FontWeight="Bold"
+                                           Foreground="Orange"
+                                           Text="Sản phẩm" />
+                                <WrapPanel />
+                            </StackPanel>
+                        </ScrollViewer>
+                        <local:ThanhToanBill Grid.Column="1" />
+                    </Grid>
+
+
+                </TabItem>
+                <TabItem x:Name="product" />
+                <TabItem x:Name="bill" />
+                <TabItem x:Name="payment" />
+                <TabItem x:Name="statistics" />
 
             </TabControl>
         </Grid>
 
 
         <Grid x:Name="GridMenu"
+              Grid.Column="0"
               Width="250"
-              Margin="-250,0,0,0"
               HorizontalAlignment="Left"
-              Background="BlanchedAlmond"
+              Background="Orange"
               RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
                 <TransformGroup>
@@ -134,115 +237,108 @@
                           FontSize="18"
                           Foreground="#FF313131"
                           Tag="main">
-                    <ListViewItem Height="45"
-                                  Padding="0"
-                                  Tag="main"
-                                  Selected="Navbar_Selected">
-                        <StackPanel Margin="10,0"
-                                    Orientation="Horizontal">
-                            <materialDesign:PackIcon Width="20"
-                                                     Height="20"
-                                                     Margin="5"
-                                                     VerticalAlignment="Center"
-                                                     Foreground="Gray"
-                                                     Kind="Shopping" />
-                            <TextBlock Margin="10"
-                                       Text="Main" />
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="45"
-                                  Padding="0"
+                    <ListViewItem Padding="0"
                                   Selected="Navbar_Selected"
-                                  Tag="customer">
-                        <StackPanel Margin="10,0"
+                                  Tag="main">
+                        <StackPanel Margin="10"
                                     Orientation="Horizontal">
-                            <materialDesign:PackIcon Width="20"
-                                                     Height="20"
-                                                     Margin="5"
-                                                     VerticalAlignment="Center"
-                                                     Foreground="#FFF08033"
-                                                     Kind="Account" />
-                            <TextBlock Margin="10"
-                                       Text="Customer" />
+                            <Image Width="30"
+                                   Height="30"
+                                   Margin="5"
+                                   Source="Assets/four_squares_48px.png"
+                                   Stretch="UniformToFill" />
+                            <TextBlock Margin="20,0,0,0"
+                                       Padding="0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="21"
+                                       FontWeight="DemiBold"
+                                       Foreground="White"
+                                       Text="Lập hoá đơn" />
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="45"
-                                  Padding="0"
+                    <ListViewItem Padding="0"
                                   Selected="Navbar_Selected"
                                   Tag="product">
-                        <StackPanel Margin="10,0"
+                        <StackPanel Margin="10"
                                     Orientation="Horizontal">
-                            <materialDesign:PackIcon Width="20"
-                                                     Height="20"
-                                                     Margin="5"
-                                                     VerticalAlignment="Center"
-                                                     Foreground="Green"
-                                                     Kind="Package" />
-                            <TextBlock Margin="10"
-                                       Text="Product" />
+                            <Image Width="30"
+                                   Height="30"
+                                   Margin="5"
+                                   Source="Assets/product.png"
+                                   Stretch="UniformToFill" />
+                            <TextBlock Margin="20,0,0,0"
+                                       Padding="0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="21"
+                                       FontWeight="DemiBold"
+                                       Foreground="White"
+                                       Text="Sản phẩm" />
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="45"
-                                  Padding="0"
+                    <ListViewItem Padding="0"
                                   Selected="Navbar_Selected"
                                   Tag="bill">
-                        <StackPanel Margin="10,0"
+                        <StackPanel Margin="10"
                                     Orientation="Horizontal">
-                            <materialDesign:PackIcon Width="20"
-                                                     Height="20"
-                                                     Margin="5"
-                                                     VerticalAlignment="Center"
-                                                     Foreground="#FFD41515"
-                                                     Kind="Invoice" />
-                            <TextBlock Margin="10"
-                                       Text="Bill" />
+                            <Image Width="30"
+                                   Height="30"
+                                   Margin="5"
+                                   Source="Assets/bill.png"
+                                   Stretch="UniformToFill" />
+                            <TextBlock Margin="20,0,0,0"
+                                       Padding="0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="21"
+                                       FontWeight="DemiBold"
+                                       Foreground="White"
+                                       Text="Hoá đơn" />
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="45"
-                                  Padding="0"
+                    <ListViewItem Padding="0"
                                   Selected="Navbar_Selected"
                                   Tag="payment">
-                        <StackPanel Margin="10,0"
+                        <StackPanel Margin="10"
                                     Orientation="Horizontal">
-                            <materialDesign:PackIcon Width="20"
-                                                     Height="20"
-                                                     Margin="5"
-                                                     VerticalAlignment="Center"
-                                                     Foreground="#FFE6A701"
-                                                     Kind="Payment" />
-                            <TextBlock Margin="10"
-                                       Text="Payment" />
+                            <Image Width="30"
+                                   Height="30"
+                                   Margin="5"
+                                   Source="Assets/payment.png"
+                                   Stretch="UniformToFill" />
+                            <TextBlock Margin="20,0,0,0"
+                                       Padding="0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="21"
+                                       FontWeight="DemiBold"
+                                       Foreground="White"
+                                       Text="Phiếu chi" />
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="45"
-                                  Padding="0"
+                    <ListViewItem Padding="0"
                                   Selected="Navbar_Selected"
                                   Tag="statistics">
-                        <StackPanel Margin="10,0"
+                        <StackPanel Margin="10"
                                     Orientation="Horizontal">
-                            <materialDesign:PackIcon Width="20"
-                                                     Height="20"
-                                                     Margin="5"
-                                                     VerticalAlignment="Center"
-                                                     Foreground="#FF0069C1"
-                                                     Kind="Billboard" />
-                            <TextBlock Margin="10"
-                                       Text="Statistics" />
+                            <Image Width="30"
+                                   Height="30"
+                                   Margin="5"
+                                   Source="Assets/statistics.png"
+                                   Stretch="UniformToFill" />
+                            <TextBlock Margin="20,0,0,0"
+                                       Padding="0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="21"
+                                       FontWeight="DemiBold"
+                                       Foreground="White"
+                                       Text="Thống kê" />
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
             </StackPanel>
-            <Button x:Name="ButtonClose"
-                    Width="30"
-                    Height="30"
-                    Padding="0"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    Background="{x:Null}"
-                    BorderBrush="{x:Null}">
-                <materialDesign:PackIcon Kind="Close"
-                                         Foreground="Black" />
-            </Button>
         </Grid>
     </Grid>
 </Window>

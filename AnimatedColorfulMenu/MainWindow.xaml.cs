@@ -39,22 +39,18 @@ namespace AnimatedColorfulMenu
             {
                 case "main":
                     formPanel.SelectedIndex = 0;
-
-                    break;
-                case "customer":
-                    formPanel.SelectedIndex = 1;
                     break;
                 case "product":
-                    formPanel.SelectedIndex = 2;
+                    formPanel.SelectedIndex = 1;
                     break;
                 case "bill":
-                    formPanel.SelectedIndex = 3;
+                    formPanel.SelectedIndex = 2;
                     break;
                 case "payment":
-                    formPanel.SelectedIndex = 4;
+                    formPanel.SelectedIndex = 3;
                     break;
                 case "statistics":
-                    formPanel.SelectedIndex = 5;
+                    formPanel.SelectedIndex = 4;
                     break;
             }
         }
@@ -63,5 +59,7 @@ namespace AnimatedColorfulMenu
         {
             this.Close();
         }
+
+
     }
 }
