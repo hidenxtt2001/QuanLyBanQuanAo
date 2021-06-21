@@ -8,6 +8,7 @@
         Height="800"
         MinWidth="1500"
         MinHeight="800"
+        DataContext="{StaticResource MainVM}"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -176,6 +177,7 @@
             <TabControl x:Name="formPanel"
                         Grid.Row="1"
                         BorderThickness="0">
+
                 <TabItem x:Name="main">
                     <local:LapHoaDon />
 

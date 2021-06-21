@@ -52,7 +52,8 @@
                          CaretBrush="Orange"
                          FontSize="15"
                          Foreground="White"
-                         SelectionBrush="Orange" />
+                         SelectionBrush="Orange"
+                         Name="productName" />
                 <TextBox Margin="10"
                          Padding="15"
                          materialDesign:HintAssist.Hint="Giá"
@@ -65,8 +66,10 @@
                          CaretBrush="Orange"
                          FontSize="15"
                          Foreground="White"
-                         SelectionBrush="Orange" />
-                <Button x:Name="thanhtoan"
+                         SelectionBrush="Orange"
+                         Name="productPrice" />
+                <Button x:Name="themProduct"
+                        IsEnabled="{Binding }"
                         Height="50"
                         Margin="15"
                         Padding="10"

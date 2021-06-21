@@ -176,7 +176,7 @@
                           VerticalScrollBarVisibility="Hidden"
                           VerticalContentAlignment="Stretch">
                 <StackPanel x:Name="listBillItems">
-                    <local:BilItem />
+
                 </StackPanel>
 
             </ScrollViewer>
