@@ -10,13 +10,12 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AnimatedColorfulMenu
+namespace AnimatedColorfulMenu.View
 {
     /// <summary>
-    /// Interação lógica para MainWindow.xam
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -25,33 +24,11 @@ namespace AnimatedColorfulMenu
             InitializeComponent();
         }
 
-        private void Appbar(object sender, MouseButtonEventArgs e)
+        private void DockPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.MouseDevice.LeftButton == MouseButtonState.Pressed)
             {
                 this.DragMove();
-            }
-        }
-
-        private void Navbar_Selected(object sender, RoutedEventArgs e)
-        {
-            switch (((ListViewItem)sender).Tag.ToString())
-            {
-                case "main":
-                    formPanel.SelectedIndex = 0;
-                    break;
-                case "product":
-                    formPanel.SelectedIndex = 1;
-                    break;
-                case "bill":
-                    formPanel.SelectedIndex = 2;
-                    break;
-                case "payment":
-                    formPanel.SelectedIndex = 3;
-                    break;
-                case "statistics":
-                    formPanel.SelectedIndex = 4;
-                    break;
             }
         }
 
@@ -60,6 +37,26 @@ namespace AnimatedColorfulMenu
             this.Close();
         }
 
-
+        private void Navbar_Selected(object sender, RoutedEventArgs e)
+        {
+            switch (((ListViewItem)sender).Tag.ToString())
+            {
+                case "main":
+                    this.formPanel.SelectedIndex = 0;
+                    break;
+                case "product":
+                    this.formPanel.SelectedIndex = 1;
+                    break;
+                case "bill":
+                    this.formPanel.SelectedIndex = 2;
+                    break;
+                case "payment":
+                    this.formPanel.SelectedIndex = 3;
+                    break;
+                case "statistics":
+                    this.formPanel.SelectedIndex = 3;
+                    break;
+            }
+        }
     }
 }

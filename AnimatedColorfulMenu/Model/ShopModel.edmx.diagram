@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f6699891342d4e65b74d5e4d8cf77b50" Name="Diagram1">
+        <EntityTypeShape EntityType="ShoppingClothModel.Bill" Width="1.5" PointX="2.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingClothModel.BillDetail" Width="1.5" PointX="5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingClothModel.Payment" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingClothModel.PaymentDetail" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingClothModel.Product" Width="1.5" PointX="2.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingClothModel.Resource" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="ShoppingClothModel.FK_BillDetail_Bill" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoppingClothModel.FK_BillDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoppingClothModel.FK_PaymentDetail_Payment" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoppingClothModel.FK_PaymentDetail_Resources" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
