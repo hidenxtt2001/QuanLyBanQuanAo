@@ -48,11 +48,11 @@
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30" />
-                        <RowDefinition Height="30" />
-                        <RowDefinition Height="30" />
-                        <RowDefinition Height="30" />
-                        <RowDefinition Height="30" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
                         <RowDefinition Height="50" />
                     </Grid.RowDefinitions>
                     <!--  //Số điện thoại  -->
@@ -64,8 +64,17 @@
                     <TextBox x:Name="customerPhone"
                              Grid.Row="0"
                              Grid.Column="1"
-                             Margin="10,0,10,0"
-                             VerticalAlignment="Center" />
+                             Margin="5"
+                             Padding="10"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                             materialDesign:TextFieldAssist.TextFieldCornerRadius="15"
+                             materialDesign:TextFieldAssist.UnderlineBrush="{x:Null}"
+                             materialDesign:TextFieldAssist.UnderlineCornerRadius="0"
+                             Background="White"
+                             BorderThickness="0"
+                             CaretBrush="Orange"
+                             FontSize="15"
+                             Foreground="Black" />
                     <!--  //Tên khách hàng  -->
                     <TextBlock Grid.Row="1"
                                Grid.Column="0"
@@ -75,8 +84,17 @@
                     <TextBox x:Name="customerName"
                              Grid.Row="1"
                              Grid.Column="1"
-                             Margin="10,0,10,0"
-                             VerticalAlignment="Center" />
+                             Margin="5"
+                             Padding="10"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                             materialDesign:TextFieldAssist.TextFieldCornerRadius="15"
+                             materialDesign:TextFieldAssist.UnderlineBrush="{x:Null}"
+                             materialDesign:TextFieldAssist.UnderlineCornerRadius="0"
+                             Background="White"
+                             BorderThickness="0"
+                             CaretBrush="Orange"
+                             FontSize="15"
+                             Foreground="Black" />
                     <!--  //Mã giảm giá  -->
                     <TextBlock Grid.Row="2"
                                Grid.Column="0"
@@ -86,8 +104,17 @@
                     <TextBox x:Name="saleNumber"
                              Grid.Row="2"
                              Grid.Column="1"
-                             Margin="10,0,10,0"
-                             VerticalAlignment="Center" />
+                             Margin="5"
+                             Padding="10"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                             materialDesign:TextFieldAssist.TextFieldCornerRadius="15"
+                             materialDesign:TextFieldAssist.UnderlineBrush="{x:Null}"
+                             materialDesign:TextFieldAssist.UnderlineCornerRadius="0"
+                             Background="White"
+                             BorderThickness="0"
+                             CaretBrush="Orange"
+                             FontSize="15"
+                             Foreground="Black" />
                     <!--  //Tổng  -->
                     <TextBlock Grid.Row="3"
                                Grid.Column="0"
@@ -146,6 +173,7 @@
 
             </StackPanel>
             <ScrollViewer Height="auto"
+                          VerticalScrollBarVisibility="Hidden"
                           VerticalContentAlignment="Stretch">
                 <StackPanel x:Name="listBillItems">
                     <local:BilItem />

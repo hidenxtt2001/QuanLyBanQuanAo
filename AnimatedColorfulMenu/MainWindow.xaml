@@ -198,7 +198,8 @@
                                            FontWeight="Bold"
                                            Foreground="Orange"
                                            Text="Sản phẩm" />
-                                <WrapPanel />
+
+                                <WrapPanel x:Name="productList" />
                             </StackPanel>
                         </ScrollViewer>
                         <local:ThanhToanBill Grid.Column="1" />
@@ -206,7 +207,80 @@
 
 
                 </TabItem>
-                <TabItem x:Name="product" />
+                <TabItem x:Name="product">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <DataGrid Grid.Column="0"
+                                  BorderBrush="Orange"
+                                  BorderThickness="4">
+                            <DataGrid.Resources>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment"
+                                            Value="Center" />
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="STT" />
+                                <DataGridTextColumn Width="*"
+                                                    Header="Tên sản phẩm" />
+                                <DataGridTextColumn Width="*"
+                                                    Header="Giá" />
+                                <DataGridTextColumn Width="*"
+                                                    Header="Action" />
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+                        <StackPanel Grid.Column="1"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                            <Image Width="300"
+                                   Height="300"
+                                   HorizontalAlignment="Center"
+                                   Source="Assets/school-bag.png" />
+                            <StackPanel Margin="20">
+                                <TextBox Margin="10"
+                                         Padding="15"
+                                         materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                                         materialDesign:TextFieldAssist.TextFieldCornerRadius="15"
+                                         materialDesign:TextFieldAssist.UnderlineBrush="{x:Null}"
+                                         materialDesign:TextFieldAssist.UnderlineCornerRadius="0"
+                                         Background="LightGray"
+                                         BorderThickness="0"
+                                         CaretBrush="Orange"
+                                         FontSize="15"
+                                         Foreground="White"
+                                         SelectionBrush="Orange"
+                                         materialDesign:HintAssist.Hint="Tên sản phẩm" />
+                                <TextBox Margin="10"
+                                         Padding="15"
+                                         materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                                         materialDesign:TextFieldAssist.TextFieldCornerRadius="15"
+                                         materialDesign:TextFieldAssist.UnderlineBrush="{x:Null}"
+                                         materialDesign:TextFieldAssist.UnderlineCornerRadius="0"
+                                         Background="LightGray"
+                                         BorderThickness="0"
+                                         CaretBrush="Orange"
+                                         FontSize="15"
+                                         Foreground="White"
+                                         SelectionBrush="Orange"
+                                         materialDesign:HintAssist.Hint="Giá" />
+                                <Button x:Name="thanhtoan"
+                                        Height="50"
+                                        Margin="15"
+                                        Padding="10"
+                                        materialDesign:ButtonAssist.CornerRadius="15"
+                                        materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                                        Background="Orange"
+                                        BorderThickness="0"
+                                        Content="THÊM"
+                                        FontSize="18" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
                 <TabItem x:Name="bill" />
                 <TabItem x:Name="payment" />
                 <TabItem x:Name="statistics" />

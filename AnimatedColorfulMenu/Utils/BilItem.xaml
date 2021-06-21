@@ -85,7 +85,7 @@
         </Grid>
         <TextBlock x:Name="pricePrduct"
                    Grid.Column="2"
-                   HorizontalAlignment="Center"
+                   HorizontalAlignment="Right"
                    VerticalAlignment="Center"
                    FontSize="15"
                    Text="0VND" />
