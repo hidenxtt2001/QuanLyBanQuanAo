@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AnimatedColorfulMenu
+namespace AnimatedColorfulMenu.Utils
 {
     /// <summary>
     /// Interaction logic for ThanhToanBill.xaml
@@ -24,7 +24,5 @@ namespace AnimatedColorfulMenu
         {
             InitializeComponent();
         }
-
-
     }
 }

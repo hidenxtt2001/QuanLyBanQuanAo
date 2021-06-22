@@ -1,14 +1,12 @@
-﻿<UserControl x:Class="AnimatedColorfulMenu.ThanhToanBill"
+﻿<UserControl x:Class="AnimatedColorfulMenu.Utils.ThanhToanBill"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:AnimatedColorfulMenu"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AnimatedColorfulMenu.Utils"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             d:DesignHeight="600"
-             d:DesignWidth="400"
-             mc:Ignorable="d">
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <DockPanel Grid.Column="1">
             <TextBlock Margin="10"
@@ -142,31 +140,31 @@
                                Text="0 VND" />
 
 
-                    <Button Style="{StaticResource MaterialDesignRaisedButton}"
-                            x:Name="thanhtoan"
+                    <Button x:Name="thanhtoan"
                             Grid.Row="5"
                             Grid.Column="0"
-                            BorderThickness="0"
-                            Background="Orange"
-                            materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                            Margin="15,10,15,8"
                             materialDesign:ButtonAssist.CornerRadius="15"
-                            ToolTip="MaterialDesignRaisedButton with Round Corners"
-                            Margin="15,10,15,8">
+                            materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                            Background="Orange"
+                            BorderThickness="0"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="MaterialDesignRaisedButton with Round Corners">
                         <TextBlock Text="Thanh toán" />
                     </Button>
 
 
-                    <Button Style="{StaticResource MaterialDesignRaisedButton}"
-                            x:Name="huy"
+                    <Button x:Name="huy"
                             Grid.Row="5"
                             Grid.Column="1"
-                            BorderThickness="0"
-                            Background="White"
-                            Foreground="Black"
-                            materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                            Margin="15,10,15,8"
                             materialDesign:ButtonAssist.CornerRadius="15"
-                            ToolTip="MaterialDesignRaisedButton with Round Corners"
-                            Margin="15,10,15,8">
+                            materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                            Background="White"
+                            BorderThickness="0"
+                            Foreground="Black"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="MaterialDesignRaisedButton with Round Corners">
                         <TextBlock Text="Huỷ" />
                     </Button>
 
@@ -174,11 +172,9 @@
 
             </StackPanel>
             <ScrollViewer Height="auto"
-                          VerticalScrollBarVisibility="Hidden"
-                          VerticalContentAlignment="Stretch">
-                <StackPanel x:Name="listBillItems">
-
-                </StackPanel>
+                          VerticalContentAlignment="Stretch"
+                          VerticalScrollBarVisibility="Hidden">
+                <StackPanel x:Name="listBillItems" />
 
             </ScrollViewer>
 

@@ -1,5 +1,4 @@
-﻿using AnimatedColorfulMenu.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,24 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AnimatedColorfulMenu
+namespace AnimatedColorfulMenu.Utils
 {
     /// <summary>
     /// Interaction logic for ProductItem.xaml
     /// </summary>
     public partial class ProductItem : UserControl
     {
-
-        private Product product;
-        public ProductItem(Product product)
+        public ProductItem()
         {
             InitializeComponent();
-            this.product = product;
         }
 
-        private void Product_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Console.WriteLine("CLick item");
+
         }
     }
 }

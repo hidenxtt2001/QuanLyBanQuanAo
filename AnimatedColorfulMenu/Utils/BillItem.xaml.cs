@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AnimatedColorfulMenu
+namespace AnimatedColorfulMenu.Utils
 {
     /// <summary>
-    /// Interaction logic for BilItem.xaml
+    /// Interaction logic for BillItem.xaml
     /// </summary>
-    public partial class BilItem : UserControl
+    public partial class BillItem : UserControl
     {
-        public BilItem()
+        public BillItem()
         {
             InitializeComponent();
         }
-
     }
 }
