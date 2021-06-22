@@ -3,44 +3,83 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:AnimatedColorfulMenu="clr-namespace:AnimatedColorfulMenu"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:local="clr-namespace:AnimatedColorfulMenu.View"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             Name="SanPhamUserControl"
+             DataContext="{StaticResource SanPhamVM}"
              mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="400" />
         </Grid.ColumnDefinitions>
-        <DataGrid Grid.Column="0"
+        <DataGrid Name="dataView"
+                  Grid.Column="0"
+                  AutoGenerateColumns="False"
                   BorderBrush="Orange"
-                  BorderThickness="4">
+                  BorderThickness="4"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding products}"
+                  SelectionMode="Single">
+
+            <DataGrid.ContextMenu>
+                <ContextMenu Name="contextMenu">
+                    <MenuItem Command="{Binding XoaProduct}"
+                              CommandParameter="{Binding Path=PlacementTarget.SelectedItem, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"
+                              Header="Xoá sản phẩm" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="HorizontalContentAlignment"
                             Value="Center" />
                 </Style>
+
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="STT" />
+                <DataGridTextColumn Binding="{Binding productID}"
+                                    Header="Mã sản phẩm" />
                 <DataGridTextColumn Width="*"
+                                    Binding="{Binding productName}"
                                     Header="Tên sản phẩm" />
                 <DataGridTextColumn Width="*"
+                                    Binding="{Binding price}"
                                     Header="Giá" />
-                <DataGridTextColumn Width="*"
-                                    Header="Action" />
+
             </DataGrid.Columns>
 
         </DataGrid>
         <StackPanel Grid.Column="1"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
-            <Image Width="300"
-                   Height="300"
-                   HorizontalAlignment="Center"
-                   Source="/Assets/school-bag.png" />
-            <StackPanel Margin="20">
-                <TextBox Margin="10"
+            <Border Width="230"
+                    Height="300"
+                    BorderBrush="Black"
+                    BorderThickness="3">
+
+                <Image Name="hinhAnh"
+                       Width="230"
+                       Height="300"
+                       HorizontalAlignment="Center"
+                       Source="{Binding bitmapImage}"
+                       Stretch="Fill">
+                    <Image.InputBindings>
+                        <MouseBinding Command="{Binding ChonHinhAnh}"
+                                      CommandParameter="{Binding ElementName=hinhAnh}"
+                                      MouseAction="LeftDoubleClick" />
+                    </Image.InputBindings>
+                </Image>
+            </Border>
+
+
+
+            <StackPanel MaxWidth="300"
+                        Margin="20">
+                <TextBox Name="productName"
+                         MinWidth="250"
+                         Margin="10"
                          Padding="15"
                          materialDesign:HintAssist.Hint="Tên sản phẩm"
                          materialDesign:ShadowAssist.ShadowDepth="Depth0"
@@ -53,8 +92,10 @@
                          FontSize="15"
                          Foreground="White"
                          SelectionBrush="Orange"
-                         Name="productName" />
-                <TextBox Margin="10"
+                         Text="{Binding NameProduct, Mode=TwoWay}" />
+                <TextBox Name="productPrice"
+                         MinWidth="250"
+                         Margin="10"
                          Padding="15"
                          materialDesign:HintAssist.Hint="Giá"
                          materialDesign:ShadowAssist.ShadowDepth="Depth0"
@@ -66,10 +107,11 @@
                          CaretBrush="Orange"
                          FontSize="15"
                          Foreground="White"
+                         PreviewTextInput="NumberValidationTextBox"
                          SelectionBrush="Orange"
-                         Name="productPrice" />
+                         Text="{Binding PriceProduct, Mode=TwoWay}" />
+
                 <Button x:Name="themProduct"
-                        IsEnabled="{Binding }"
                         Height="50"
                         Margin="15"
                         Padding="10"
@@ -77,6 +119,8 @@
                         materialDesign:ShadowAssist.ShadowDepth="Depth1"
                         Background="Orange"
                         BorderThickness="0"
+                        Command="{Binding ThemProduct}"
+                        CommandParameter="{Binding ElementName=SanPhamUserControl}"
                         Content="THÊM"
                         FontSize="18" />
             </StackPanel>

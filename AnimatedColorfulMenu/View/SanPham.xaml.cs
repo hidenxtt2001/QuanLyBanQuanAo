@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Google.Cloud.Firestore;
 namespace AnimatedColorfulMenu.View
 {
     /// <summary>
@@ -20,9 +21,16 @@ namespace AnimatedColorfulMenu.View
     /// </summary>
     public partial class SanPham : UserControl
     {
+
         public SanPham()
         {
             InitializeComponent();
         }
+        public void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
     }
 }

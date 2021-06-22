@@ -54,7 +54,7 @@ namespace AnimatedColorfulMenu.View
                     this.formPanel.SelectedIndex = 3;
                     break;
                 case "statistics":
-                    this.formPanel.SelectedIndex = 3;
+                    this.formPanel.SelectedIndex = 4;
                     break;
             }
         }
