@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimatedColorfulMenu.View"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        Width="1500"
+        Width="1180"
         Height="800"
-        MinWidth="1500"
+        MinWidth="1180"
         MinHeight="800"
         DataContext="{StaticResource MainVM}"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        x:Name="mainWindow"
         mc:Ignorable="d">
     <Window.Resources>
         <ResourceDictionary>
@@ -178,7 +179,12 @@
             <TabControl x:Name="formPanel"
                         Grid.Row="1"
                         BorderThickness="0">
-
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectedTabChanged}"
+                                               CommandParameter="{Binding ElementName=mainWindow}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
                 <TabItem x:Name="main">
                     <local:LapHoaDon />
 

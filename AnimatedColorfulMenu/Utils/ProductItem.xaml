@@ -13,7 +13,8 @@
              d:DesignHeight="230"
              d:DesignWidth="150"
              Background="LightGray"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             x:Name="Self">
 
     <Grid>
         <Grid>
@@ -23,21 +24,20 @@
             </Grid.RowDefinitions>
             <Image x:Name="image"
                    Grid.Row="0"
-                   Stretch="Fill" />
+                   Stretch="Fill"
+                   Source="{Binding ElementName=Self,Path=product.imageUrl}" />
             <StackPanel Grid.Row="1"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Orientation="Vertical">
-                <TextBlock x:Name="productName"
+                <TextBlock Text="{Binding ElementName=Self, Path=product.productName }"
+                           FontSize="15"
+                           FontWeight="DemiBold" />
+                <TextBlock HorizontalAlignment="Center"
                            FontSize="15"
                            FontWeight="DemiBold"
-                           Text="Name Product" />
-                <TextBlock x:Name="productPrice"
-                           HorizontalAlignment="Center"
-                           FontSize="15"
-                           FontWeight="DemiBold"
-                           Foreground="Orange"
-                           Text="Price" />
+                           Text="{Binding ElementName=Self,Path=product.price}"
+                           Foreground="Orange" />
             </StackPanel>
         </Grid>
         <Grid Background="Transparent"

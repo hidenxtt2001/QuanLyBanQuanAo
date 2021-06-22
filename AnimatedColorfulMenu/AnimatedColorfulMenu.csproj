@@ -255,6 +255,7 @@
       <DependentUpon>ThanhToanBill.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\LapHoaDonViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SanPhamViewModel.cs" />
     <Compile Include="View\LapHoaDon.xaml.cs">

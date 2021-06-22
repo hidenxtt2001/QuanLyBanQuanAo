@@ -6,6 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:AnimatedColorfulMenu.View"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             DataContext="{StaticResource LapHoaDonVM}"
              mc:Ignorable="d">
 
     <Grid>
@@ -22,14 +23,18 @@
                            FontWeight="Bold"
                            Foreground="Orange"
                            Text="Sản phẩm" />
-
-                <ItemsControl x:Name="productList">
+                <ListBox ItemsSource="{Binding products}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Utils:ProductItem />
+                            <Utils:ProductItem product="{Binding}" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                </ListBox>
             </StackPanel>
         </ScrollViewer>
 

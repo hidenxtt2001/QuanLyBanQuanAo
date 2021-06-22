@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AnimatedColorfulMenu.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,16 @@ namespace AnimatedColorfulMenu.Utils
         {
             InitializeComponent();
         }
+
+        public Product product
+        {
+            get { return (Product)GetValue(item); }
+            set { SetValue(item, value); }
+        }
+
+        public static readonly DependencyProperty item = DependencyProperty.Register("product", typeof(Product), typeof(ProductItem));
+
+
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {

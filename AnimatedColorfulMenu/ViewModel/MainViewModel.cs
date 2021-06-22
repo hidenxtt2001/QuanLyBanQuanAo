@@ -1,10 +1,12 @@
 ﻿using AnimatedColorfulMenu.Model;
+using AnimatedColorfulMenu.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace AnimatedColorfulMenu.ViewModel
 {
@@ -17,26 +19,30 @@ namespace AnimatedColorfulMenu.ViewModel
             {
                 this._products = value;
                 OnPropertyChanged();
+
             }
         }
 
 
 
-
+        public ICommand SelectedTabChanged { get; set; }
         public MainViewModel()
         {
             loadProduct();
-
+            SelectedTabChanged = new RelayCommand<MainWindow>((p) => { return true; }, (p) =>
+            {
+                p.formPanel.UpdateLayout();
+            });
         }
 
         public void loadProduct()
         {
-            products = new ObservableCollection<Product>();
-
+            var k = new ObservableCollection<Product>();
             foreach (Product i in DataProvider.Ins.DB.Products)
             {
-                products.Add(i);
+                k.Add(i);
             }
+            products = k;
 
         }
 
