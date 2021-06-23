@@ -24,7 +24,7 @@
                            FontWeight="Bold"
                            Foreground="BlueViolet"
                            Text="Sản phẩm" />
-                <ItemsControl ItemsSource="{Binding products}">
+                <ItemsControl ItemsSource="{Binding products,Source={StaticResource MainVM}}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel />

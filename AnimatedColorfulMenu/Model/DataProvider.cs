@@ -17,5 +17,8 @@ namespace AnimatedColorfulMenu.Model
         {
             DB = new ShoppingClothEntities();
         }
+
+
+
     }
 }

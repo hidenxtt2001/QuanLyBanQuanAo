@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AnimatedColorfulMenu.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,16 @@ namespace AnimatedColorfulMenu.Utils
     /// </summary>
     public partial class BillItem : UserControl
     {
+        public Product productBill
+        {
+            get { return (Product)GetValue(item); }
+            set { SetValue(item, value); }
+        }
+
+        public static readonly DependencyProperty item = DependencyProperty.Register("productBill", typeof(Product), typeof(BillItem));
+
+        public int number { get; set; }
+
         public BillItem()
         {
             InitializeComponent();

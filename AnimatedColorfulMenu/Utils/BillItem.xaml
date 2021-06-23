@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:AnimatedColorfulMenu.Utils"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d">
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d"
+             x:Name="BillSelf">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -21,7 +23,9 @@
                     Padding="0"
                     Background="{x:Null}"
                     BorderBrush="{x:Null}"
-                    BorderThickness="0">
+                    BorderThickness="0"
+                    Command="{Binding deleteBill,Source={StaticResource LapHoaDonVM}}"
+                    CommandParameter="{Binding  ElementName=BillSelf}">
                 <materialDesign:PackIcon Width="20"
                                          Height="20"
                                          Margin="5"
@@ -30,12 +34,12 @@
                                          Kind="TrashCan" />
             </Button>
 
-            <TextBlock x:Name="productName"
-                       Grid.Column="1"
+            <TextBlock Grid.Column="1"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        FontSize="15"
-                       Text="Name" />
+                       Foreground="Black"
+                       Text="{Binding ElementName=BillSelf,Path=productBill.productName}" />
         </Grid>
 
         <Grid Grid.Column="1">
@@ -59,12 +63,12 @@
                                          Kind="MinusBoxOutline" />
             </Button>
 
-            <TextBlock x:Name="numberPrduct"
-                       Grid.Column="1"
+            <TextBlock Grid.Column="1"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="15"
-                       Text="0" />
+                       Foreground="Black"
+                       Text="{Binding ElementName=BillSelf,Path=number}" />
             <Button x:Name="minus"
                     Grid.Column="2"
                     Padding="0"
@@ -87,6 +91,6 @@
                    HorizontalAlignment="Right"
                    VerticalAlignment="Center"
                    FontSize="15"
-                   Text="0VND" />
+                   Text="{Binding  ElementName=BillSelf,Path=productBill.price}" />
     </Grid>
 </UserControl>

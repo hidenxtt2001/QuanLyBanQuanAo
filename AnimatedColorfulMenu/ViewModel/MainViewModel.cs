@@ -38,20 +38,21 @@ namespace AnimatedColorfulMenu.ViewModel
 
         public MainViewModel()
         {
+            products = new ObservableCollection<Product>();
             tabSwitch = new RelayCommand<int>((p) =>
             {
                 return true;
             }, (p) =>
             {
                 tabSelected = p;
+                loadProduct();
             });
             loadProduct();
-
         }
 
         public void loadProduct()
         {
-            products = new ObservableCollection<Product>();
+            products.Clear();
             foreach (Product i in DataProvider.Ins.DB.Products)
             {
                 products.Add(i);

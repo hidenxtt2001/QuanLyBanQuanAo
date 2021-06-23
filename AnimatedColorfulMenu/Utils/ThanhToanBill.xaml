@@ -183,7 +183,18 @@
             <ScrollViewer Height="auto"
                           VerticalContentAlignment="Stretch"
                           VerticalScrollBarVisibility="Hidden">
-                <StackPanel x:Name="listBillItems" />
+                <ItemsControl ItemsSource="{Binding billItems , Source={StaticResource LapHoaDonVM}}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <local:BillItem productBill="{Binding productBill}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
 
             </ScrollViewer>
 

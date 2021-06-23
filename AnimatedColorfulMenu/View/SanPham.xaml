@@ -11,6 +11,11 @@
              DataContext="{StaticResource SanPhamVM}"
              mc:Ignorable="d">
     <Grid>
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="IsVisibleChanged">
+                <i:InvokeCommandAction Command="" />
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition Width="400" />
