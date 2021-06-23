@@ -4,6 +4,7 @@
              xmlns:AnimatedColorfulMenu="clr-namespace:AnimatedColorfulMenu"
              xmlns:Utils="clr-namespace:AnimatedColorfulMenu.Utils"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:local="clr-namespace:AnimatedColorfulMenu.View"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              DataContext="{StaticResource LapHoaDonVM}"
@@ -21,9 +22,9 @@
                 <TextBlock Margin="10"
                            FontSize="25"
                            FontWeight="Bold"
-                           Foreground="Orange"
+                           Foreground="BlueViolet"
                            Text="Sản phẩm" />
-                <ListBox ItemsSource="{Binding products}">
+                <ItemsControl ItemsSource="{Binding products}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel />
@@ -31,14 +32,21 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Utils:ProductItem product="{Binding}" />
+
+
+                            <Utils:ProductItem product="{Binding}">
+
+                            </Utils:ProductItem>
+
+
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                </ListBox>
+                </ItemsControl>
             </StackPanel>
         </ScrollViewer>
 
-        <Utils:ThanhToanBill Grid.Column="1" />
+        <Utils:ThanhToanBill Grid.Column="1"
+                             Loaded="ThanhToanBill_Loaded" />
 
     </Grid>
 </UserControl>

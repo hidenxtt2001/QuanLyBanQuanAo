@@ -24,5 +24,10 @@ namespace AnimatedColorfulMenu.View
         {
             InitializeComponent();
         }
+
+        private void ThanhToanBill_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -21,11 +21,11 @@ namespace AnimatedColorfulMenu.ViewModel
     class SanPhamViewModel : MainViewModel
     {
 
-        public ICommand ThemProduct { get; set; }
+        public ICommand themProduct { get; set; }
 
-        public ICommand ChonHinhAnh { get; set; }
+        public ICommand chonHinhAnh { get; set; }
 
-        public ICommand XoaProduct { get; set; }
+        public ICommand xoaProduct { get; set; }
 
         private string imagePath { get; set; }
 
@@ -70,9 +70,9 @@ namespace AnimatedColorfulMenu.ViewModel
             ResetFormInput();
             string path = AppDomain.CurrentDomain.BaseDirectory + @"quanlyquanao-firebase-adminsdk-x253q-2787a0673d.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-            ThemProduct = new RelayCommand<SanPham>((p) => { return checkValidInput(p); }, (p) => { addProduct(p); });
-            ChonHinhAnh = new RelayCommand<Image>((p) => { return true; }, (p) => { chooseImage(p); });
-            XoaProduct = new RelayCommand<Product>((p) =>
+            themProduct = new RelayCommand<SanPham>((p) => { return checkValidInput(p); }, (p) => { addProduct(p); });
+            chonHinhAnh = new RelayCommand<Image>((p) => { return true; }, (p) => { chooseImage(p); });
+            xoaProduct = new RelayCommand<Product>((p) =>
             {
                 return p != null;
             }, (p) =>

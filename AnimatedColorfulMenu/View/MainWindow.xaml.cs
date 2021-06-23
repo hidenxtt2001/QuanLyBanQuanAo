@@ -37,26 +37,6 @@ namespace AnimatedColorfulMenu.View
             this.Close();
         }
 
-        private void Navbar_Selected(object sender, RoutedEventArgs e)
-        {
-            switch (((ListViewItem)sender).Tag.ToString())
-            {
-                case "main":
-                    this.formPanel.SelectedIndex = 0;
-                    break;
-                case "product":
-                    this.formPanel.SelectedIndex = 1;
-                    break;
-                case "bill":
-                    this.formPanel.SelectedIndex = 2;
-                    break;
-                case "payment":
-                    this.formPanel.SelectedIndex = 3;
-                    break;
-                case "statistics":
-                    this.formPanel.SelectedIndex = 4;
-                    break;
-            }
-        }
+
     }
 }

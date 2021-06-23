@@ -26,7 +26,7 @@
 
             <DataGrid.ContextMenu>
                 <ContextMenu Name="contextMenu">
-                    <MenuItem Command="{Binding XoaProduct}"
+                    <MenuItem Command="{Binding xoaProduct}"
                               CommandParameter="{Binding Path=PlacementTarget.SelectedItem, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"
                               Header="Xoá sản phẩm" />
                 </ContextMenu>
@@ -66,7 +66,7 @@
                        Source="{Binding bitmapImage}"
                        Stretch="Fill">
                     <Image.InputBindings>
-                        <MouseBinding Command="{Binding ChonHinhAnh}"
+                        <MouseBinding Command="{Binding chonHinhAnh}"
                                       CommandParameter="{Binding ElementName=hinhAnh}"
                                       MouseAction="LeftDoubleClick" />
                     </Image.InputBindings>
@@ -119,7 +119,7 @@
                         materialDesign:ShadowAssist.ShadowDepth="Depth1"
                         Background="Orange"
                         BorderThickness="0"
-                        Command="{Binding ThemProduct}"
+                        Command="{Binding themProduct}"
                         CommandParameter="{Binding ElementName=SanPhamUserControl}"
                         Content="THÊM"
                         FontSize="18" />

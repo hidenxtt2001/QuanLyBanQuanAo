@@ -2,9 +2,11 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AnimatedColorfulMenu.View"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:AnimatedColorfulMenu.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Name="mainWindow"
         Width="1180"
         Height="800"
         MinWidth="1180"
@@ -12,8 +14,6 @@
         DataContext="{StaticResource MainVM}"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        x:Name="mainWindow"
         mc:Ignorable="d">
     <Window.Resources>
         <ResourceDictionary>
@@ -178,18 +178,15 @@
             </DockPanel>
             <TabControl x:Name="formPanel"
                         Grid.Row="1"
-                        BorderThickness="0">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="SelectionChanged">
-                        <i:InvokeCommandAction Command="{Binding SelectedTabChanged}"
-                                               CommandParameter="{Binding ElementName=mainWindow}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-                <TabItem x:Name="main">
+                        BorderThickness="0"
+                        IsSynchronizedWithCurrentItem="True"
+                        SelectedIndex="{Binding Path=tabSelected}">
+                <TabItem x:Name="main"
+                         DataContext="{Binding ElementName=formPanel, Path=DataContext}">
                     <local:LapHoaDon />
-
                 </TabItem>
-                <TabItem x:Name="product">
+                <TabItem x:Name="product"
+                         DataContext="{Binding ElementName=formPanel, Path=DataContext}">
                     <local:SanPham />
                 </TabItem>
                 <TabItem x:Name="bill" />
@@ -205,7 +202,7 @@
               Grid.Column="0"
               Width="250"
               HorizontalAlignment="Left"
-              Background="Orange"
+              Background="BlueViolet"
               RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
                 <TransformGroup>
@@ -222,29 +219,40 @@
                 <ListView FontFamily="Champagne &amp; Limousines"
                           FontSize="18"
                           Foreground="#FF313131"
+                          x:Name="listTab"
                           Tag="main">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding tabSwitch}"
+                                                   CommandParameter="{Binding ElementName=listTab,Path=SelectedIndex}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                     <ListViewItem Padding="0"
-                                  Selected="Navbar_Selected"
                                   Tag="main">
-                        <StackPanel Margin="10"
-                                    Orientation="Horizontal">
-                            <Image Width="30"
-                                   Height="30"
-                                   Margin="5"
-                                   Source="/Assets/four_squares_48px.png"
-                                   Stretch="UniformToFill" />
-                            <TextBlock Margin="20,0,0,0"
-                                       Padding="0"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       FontSize="21"
-                                       FontWeight="DemiBold"
-                                       Foreground="White"
-                                       Text="Lập hoá đơn" />
-                        </StackPanel>
+                        <Border Width="250">
+
+                            <StackPanel Margin="10"
+                                        Orientation="Horizontal">
+
+                                <Image Width="30"
+                                       Height="30"
+                                       Margin="5"
+                                       Source="/Assets/four_squares_48px.png"
+                                       Stretch="UniformToFill" />
+                                <TextBlock Margin="20,0,0,0"
+                                           Padding="0"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="21"
+                                           FontWeight="DemiBold"
+                                           Foreground="White"
+                                           Text="Lập hoá đơn" />
+                            </StackPanel>
+                        </Border>
+
+
                     </ListViewItem>
                     <ListViewItem Padding="0"
-                                  Selected="Navbar_Selected"
                                   Tag="product">
                         <StackPanel Margin="10"
                                     Orientation="Horizontal">
@@ -264,7 +272,6 @@
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Padding="0"
-                                  Selected="Navbar_Selected"
                                   Tag="bill">
                         <StackPanel Margin="10"
                                     Orientation="Horizontal">
@@ -284,7 +291,6 @@
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Padding="0"
-                                  Selected="Navbar_Selected"
                                   Tag="payment">
                         <StackPanel Margin="10"
                                     Orientation="Horizontal">
@@ -304,7 +310,6 @@
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Padding="0"
-                                  Selected="Navbar_Selected"
                                   Tag="statistics">
                         <StackPanel Margin="10"
                                     Orientation="Horizontal">

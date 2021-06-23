@@ -6,12 +6,23 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace AnimatedColorfulMenu.ViewModel
 {
     class MainViewModel : BaseViewModel
     {
+        private int _tabSelected;
+        public int tabSelected
+        {
+            get => this._tabSelected; set
+            {
+                this._tabSelected = value;
+                OnPropertyChanged("tabSelected");
+            }
+        }
+
         private ObservableCollection<Product> _products;
         public ObservableCollection<Product> products
         {
@@ -23,26 +34,28 @@ namespace AnimatedColorfulMenu.ViewModel
             }
         }
 
+        public ICommand tabSwitch { get; set; }
 
-
-        public ICommand SelectedTabChanged { get; set; }
         public MainViewModel()
         {
-            loadProduct();
-            SelectedTabChanged = new RelayCommand<MainWindow>((p) => { return true; }, (p) =>
+            tabSwitch = new RelayCommand<int>((p) =>
             {
-                p.formPanel.UpdateLayout();
+                return true;
+            }, (p) =>
+            {
+                tabSelected = p;
             });
+            loadProduct();
+
         }
 
         public void loadProduct()
         {
-            var k = new ObservableCollection<Product>();
+            products = new ObservableCollection<Product>();
             foreach (Product i in DataProvider.Ins.DB.Products)
             {
-                k.Add(i);
+                products.Add(i);
             }
-            products = k;
 
         }
 
@@ -60,5 +73,8 @@ namespace AnimatedColorfulMenu.ViewModel
             DataProvider.Ins.DB.SaveChanges();
             loadProduct();
         }
+
+
+
     }
 }
