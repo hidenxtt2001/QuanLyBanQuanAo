@@ -30,7 +30,7 @@
                                          Height="20"
                                          Margin="5"
                                          VerticalAlignment="Center"
-                                         Foreground="#FFF08033"
+                                         Foreground="BlueViolet"
                                          Kind="TrashCan" />
             </Button>
 
@@ -48,19 +48,22 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button x:Name="plus"
+            <Button x:Name="minus"
                     Grid.Column="0"
                     Padding="0"
                     Background="{x:Null}"
                     BorderBrush="{x:Null}"
-                    BorderThickness="0">
+                    BorderThickness="0"
+                    Click="changeNumber_Click">
                 <materialDesign:PackIcon Width="20"
                                          Height="20"
-                                         Foreground="Orange"
+                                         Foreground="BlueViolet"
                                          Margin="5"
                                          HorizontalAlignment="Center"
                                          VerticalAlignment="Center"
-                                         Kind="MinusBoxOutline" />
+                                         Kind="MinusBoxOutline">
+
+                </materialDesign:PackIcon>
             </Button>
 
             <TextBlock Grid.Column="1"
@@ -68,17 +71,18 @@
                        VerticalAlignment="Center"
                        FontSize="15"
                        Foreground="Black"
-                       Text="{Binding ElementName=BillSelf,Path=number}" />
-            <Button x:Name="minus"
+                       Text="{Binding ElementName=BillSelf,Path=number }" />
+            <Button x:Name="plus"
                     Grid.Column="2"
                     Padding="0"
                     Background="{x:Null}"
                     BorderBrush="{x:Null}"
-                    BorderThickness="0">
+                    BorderThickness="0"
+                    Click="changeNumber_Click">
                 <materialDesign:PackIcon Width="20"
                                          Height="20"
                                          Margin="5"
-                                         Foreground="Orange"
+                                         Foreground="BlueViolet"
                                          HorizontalAlignment="Center"
                                          VerticalAlignment="Center"
                                          Kind="PlusBoxOutline" />
@@ -91,6 +95,6 @@
                    HorizontalAlignment="Right"
                    VerticalAlignment="Center"
                    FontSize="15"
-                   Text="{Binding  ElementName=BillSelf,Path=productBill.price}" />
+                   Text="{Binding  ElementName=BillSelf,Path=sumPrice,StringFormat={}{0} VNĐ}" />
     </Grid>
 </UserControl>

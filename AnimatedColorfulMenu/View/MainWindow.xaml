@@ -189,8 +189,7 @@
                          DataContext="{Binding ElementName=formPanel, Path=DataContext}">
                     <local:SanPham />
                 </TabItem>
-                <TabItem x:Name="bill" />
-                <TabItem x:Name="payment" />
+              
                 <TabItem x:Name="statistics" />
 
 
@@ -269,44 +268,6 @@
                                        FontWeight="DemiBold"
                                        Foreground="White"
                                        Text="Sản phẩm" />
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Padding="0"
-                                  Tag="bill">
-                        <StackPanel Margin="10"
-                                    Orientation="Horizontal">
-                            <Image Width="30"
-                                   Height="30"
-                                   Margin="5"
-                                   Source="/Assets/bill.png"
-                                   Stretch="UniformToFill" />
-                            <TextBlock Margin="20,0,0,0"
-                                       Padding="0"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       FontSize="21"
-                                       FontWeight="DemiBold"
-                                       Foreground="White"
-                                       Text="Hoá đơn" />
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Padding="0"
-                                  Tag="payment">
-                        <StackPanel Margin="10"
-                                    Orientation="Horizontal">
-                            <Image Width="30"
-                                   Height="30"
-                                   Margin="5"
-                                   Source="/Assets/payment.png"
-                                   Stretch="UniformToFill" />
-                            <TextBlock Margin="20,0,0,0"
-                                       Padding="0"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       FontSize="21"
-                                       FontWeight="DemiBold"
-                                       Foreground="White"
-                                       Text="Phiếu chi" />
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Padding="0"

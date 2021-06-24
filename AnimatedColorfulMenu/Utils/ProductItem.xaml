@@ -33,12 +33,13 @@
                         Orientation="Vertical">
                 <TextBlock FontSize="15"
                            FontWeight="DemiBold"
+                           HorizontalAlignment="Center"
                            Text="{Binding ElementName=Self, Path=product.productName}" />
                 <TextBlock HorizontalAlignment="Center"
                            FontSize="15"
                            FontWeight="DemiBold"
                            Foreground="BlueViolet"
-                           Text="{Binding ElementName=Self, Path=product.price}" />
+                           Text="{Binding ElementName=Self, Path=product.price,StringFormat={}{0} VND}" />
             </StackPanel>
         </Grid>
         <Grid Background="Transparent">

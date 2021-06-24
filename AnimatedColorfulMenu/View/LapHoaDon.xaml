@@ -45,8 +45,12 @@
             </StackPanel>
         </ScrollViewer>
 
-        <Utils:ThanhToanBill Grid.Column="1"
-                             Loaded="ThanhToanBill_Loaded" />
+        <Border Grid.Column="1"
+                BorderThickness="2 0 0 0"
+                BorderBrush="LightGray">
+            <Utils:ThanhToanBill Loaded="ThanhToanBill_Loaded" />
+        </Border>
+
 
     </Grid>
 </UserControl>

@@ -2,9 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AnimatedColorfulMenu.Resources"
                     xmlns:viewmodel="clr-namespace:AnimatedColorfulMenu.ViewModel">
+    <viewmodel:MainViewModel x:Key="MainVM" />
     <viewmodel:SanPhamViewModel x:Key="SanPhamVM" />
     <viewmodel:LapHoaDonViewModel x:Key="LapHoaDonVM" />
-    <viewmodel:MainViewModel x:Key="MainVM" />
+
 
 
 </ResourceDictionary>

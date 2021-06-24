@@ -7,6 +7,8 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
              d:DesignHeight="450"
+             x:Name="thanhToan"
+             DataContext="{StaticResource LapHoaDonVM}"
              d:DesignWidth="800">
     <Grid>
         <DockPanel Grid.Column="1">
@@ -15,6 +17,7 @@
                        DockPanel.Dock="Top"
                        FontSize="30"
                        FontWeight="Bold"
+                       Foreground="Gray"
                        Text="Thanh Toán" />
             <Grid Height="40"
                   Background="LightGray"
@@ -27,14 +30,17 @@
                 <TextBlock Grid.Column="0"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
+                           Foreground="Gray"
                            FontWeight="DemiBold"
                            Text="Sản Phẩm" />
                 <TextBlock Grid.Column="1"
                            HorizontalAlignment="Center"
+                           Foreground="Gray"
                            VerticalAlignment="Center"
                            FontWeight="DemiBold"
                            Text="SL" />
                 <TextBlock Grid.Column="2"
+                           Foreground="Gray"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            FontWeight="DemiBold"
@@ -49,21 +55,19 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50" />
-                        <RowDefinition Height="50" />
-                        <RowDefinition Height="50" />
-                        <RowDefinition Height="50" />
+
                         <RowDefinition Height="50" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <!--  //Số điện thoại  -->
-                    <TextBlock Grid.Row="0"
+                    <TextBlock Grid.Row="1"
+                               Foreground="Gray"
                                Grid.Column="0"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontWeight="Bold"
                                Text="Số điện thoại" />
-                    <TextBox x:Name="customerPhone"
-                             Grid.Row="0"
+                    <TextBox Grid.Row="1"
                              Grid.Column="1"
                              Margin="5"
                              Padding="10"
@@ -74,18 +78,19 @@
                              Background="White"
                              BorderThickness="0"
                              CaretBrush="BlueViolet"
-                             FontWeight="Bold"
+                             PreviewTextInput="NumberValidationTextBox"
                              FontSize="15"
+                             Text="{Binding phoneNumber, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
                              Foreground="Black" />
                     <!--  //Tên khách hàng  -->
-                    <TextBlock Grid.Row="1"
+                    <TextBlock Grid.Row="0"
                                Grid.Column="0"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
+                               Foreground="Gray"
                                FontWeight="Bold"
                                Text="Tên khách hàng" />
-                    <TextBox x:Name="customerName"
-                             Grid.Row="1"
+                    <TextBox Grid.Row="0"
                              Grid.Column="1"
                              Margin="5"
                              Padding="10"
@@ -96,83 +101,35 @@
                              Background="White"
                              BorderThickness="0"
                              CaretBrush="BlueViolet"
+                             Text="{Binding nameCustomer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                              FontSize="15"
                              Foreground="Black" />
-                    <!--  //Mã giảm giá  -->
-                    <TextBlock Grid.Row="2"
-                               Grid.Column="0"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontWeight="Bold"
-                               Text="Mã giảm giá" />
-                    <TextBox x:Name="saleNumber"
-                             Grid.Row="2"
-                             Grid.Column="1"
-                             Margin="5"
-                             Padding="10"
-                             materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                             materialDesign:TextFieldAssist.TextFieldCornerRadius="15"
-                             materialDesign:TextFieldAssist.UnderlineBrush="{x:Null}"
-                             materialDesign:TextFieldAssist.UnderlineCornerRadius="0"
-                             Background="White"
-                             BorderThickness="0"
-                             CaretBrush="BlueViolet"
-                             FontSize="15"
-                             Foreground="Black" />
-                    <!--  //Tổng  -->
-                    <TextBlock Grid.Row="3"
-                               Grid.Column="0"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontWeight="Bold"
-                               Text="Giảm giá" />
-                    <TextBlock x:Name="totalSale"
-                               Grid.Row="3"
-                               Grid.Column="1"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Text="0 VND" />
 
-                    <TextBlock Grid.Row="4"
-                               Grid.Column="0"
-                               HorizontalAlignment="Center"
-                               FontWeight="Bold"
-                               VerticalAlignment="Center"
-                               Text="Tổng" />
-                    <TextBlock x:Name="totalPrice"
-                               Grid.Row="4"
-                               Grid.Column="1"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Text="0 VND" />
-
-
-                    <Button x:Name="thanhtoan"
-                            Grid.Row="5"
+                    <Button Grid.Row="2"
                             Grid.Column="0"
                             Margin="15,10,15,8"
                             materialDesign:ButtonAssist.CornerRadius="15"
                             materialDesign:ShadowAssist.ShadowDepth="Depth1"
                             Background="BlueViolet"
                             BorderThickness="0"
-                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Command="{Binding thanhToanBill ,UpdateSourceTrigger=PropertyChanged}"
+                            CommandParameter="{Binding thanhToan}"
                             ToolTip="MaterialDesignRaisedButton with Round Corners">
                         <TextBlock Text="Thanh toán" />
                     </Button>
 
 
                     <Button x:Name="huy"
-                            Grid.Row="5"
+                            Grid.Row="2"
                             Grid.Column="1"
                             Margin="15,10,15,8"
                             materialDesign:ButtonAssist.CornerRadius="15"
                             materialDesign:ShadowAssist.ShadowDepth="Depth1"
                             Background="White"
                             BorderThickness="0"
-                            Foreground="Black"
-                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Foreground="Gray"
+                            Command="{Binding huyThanhToan ,UpdateSourceTrigger=PropertyChanged}"
+                            CommandParameter="{Binding thanhToan}"
                             ToolTip="MaterialDesignRaisedButton with Round Corners">
                         <TextBlock Text="Huỷ" />
                     </Button>
@@ -182,8 +139,9 @@
             </StackPanel>
             <ScrollViewer Height="auto"
                           VerticalContentAlignment="Stretch"
-                          VerticalScrollBarVisibility="Hidden">
-                <ItemsControl ItemsSource="{Binding billItems , Source={StaticResource LapHoaDonVM}}">
+                          VerticalScrollBarVisibility="Auto">
+
+                <ItemsControl ItemsSource="{Binding billItems }">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Vertical" />
@@ -195,6 +153,8 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
+
+
 
             </ScrollViewer>
 
