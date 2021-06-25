@@ -42,6 +42,8 @@ namespace AnimatedColorfulMenu.ViewModel
 
         public ICommand loadData { get; set; }
 
+
+
         public MainViewModel()
         {
             products = new ObservableCollection<Product>();
@@ -80,8 +82,12 @@ namespace AnimatedColorfulMenu.ViewModel
                 tabSelected = p;
                 loadProduct();
             });
+
+
             loadProduct();
         }
+
+
 
         public void loadDataFunc()
         {

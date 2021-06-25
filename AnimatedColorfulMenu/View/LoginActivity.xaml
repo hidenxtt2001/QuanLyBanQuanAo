@@ -1,0 +1,55 @@
+﻿<Window x:Class="AnimatedColorfulMenu.View.LoginActivity"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnimatedColorfulMenu.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        WindowStyle="SingleBorderWindow"
+        mc:Ignorable="d"
+        Title="LoginActivity"
+        WindowStartupLocation="CenterScreen"
+        Height="450"
+        x:Name="loginWindown"
+        DataContext="{StaticResource LoginVM}"
+        Width="800">
+    <Grid>
+        <StackPanel Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+            <TextBlock Margin="0,0,0,40"
+                       HorizontalAlignment="Center"
+                       FontSize="44"
+                       FontWeight="Medium"
+                       FontFamily="Roboto">
+                Shopping Clothes
+            </TextBlock>
+            <TextBox Width="281"
+                     Margin="0,0,0,30"
+                     FontSize="18"
+                     VerticalAlignment="Center"
+                     materialDesign:HintAssist.Hint="Tài khoản"
+                     Text="{Binding username,UpdateSourceTrigger=PropertyChanged}"
+                     materialDesign:TextFieldAssist.TrailingIcon="AccountOutline" />
+            <TextBox Width="281"
+                     VerticalAlignment="Center"
+                     FontSize="18"
+                     Text="{Binding password , UpdateSourceTrigger=PropertyChanged}"
+                     materialDesign:HintAssist.Hint="Mật khẩu"
+                     materialDesign:TextFieldAssist.TrailingIcon="LockOutline" />
+            <Button Height="51"
+                    Margin="30"
+                    Command="{Binding login}"
+                    CommandParameter="{Binding ElementName=loginWindown}"
+                    Background="BlueViolet"
+                    ToolTipService.ShowOnDisabled="True">
+                <Button.ToolTip>
+                    <ToolTip Content="{Binding tooltip,UpdateSourceTrigger=PropertyChanged}"></ToolTip>
+                </Button.ToolTip>
+                ĐĂNG NHẬP
+            </Button>
+
+        </StackPanel>
+    </Grid>
+</Window>

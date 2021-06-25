@@ -31,5 +31,6 @@ namespace AnimatedColorfulMenu.Model
         public virtual DbSet<PaymentDetail> PaymentDetails { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Resource> Resources { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
     }
 }

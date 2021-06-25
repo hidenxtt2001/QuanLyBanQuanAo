@@ -22,6 +22,14 @@ namespace AnimatedColorfulMenu.View
         public MainWindow()
         {
             InitializeComponent();
+            LoginWindow();
+        }
+
+        private void LoginWindow()
+        {
+            LoginActivity loginActivity = new LoginActivity();
+            loginActivity.ShowDialog();
+
         }
 
         private void DockPanel_MouseDown(object sender, MouseButtonEventArgs e)

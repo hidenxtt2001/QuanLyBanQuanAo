@@ -15,7 +15,8 @@
         <AssociationConnector Association="ShoppingClothModel.FK_BillDetail_Product" ManuallyRouted="false" />
         <AssociationConnector Association="ShoppingClothModel.FK_PaymentDetail_Payment" ManuallyRouted="false" />
         <AssociationConnector Association="ShoppingClothModel.FK_PaymentDetail_Resources" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="ShoppingClothModel.Account" Width="1.5" PointX="5.375" PointY="0.75" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
