@@ -82,6 +82,7 @@ namespace AnimatedColorfulMenu.ViewModel
 
         }
 
+
         private void RemoveProduct(Product e)
         {
             deleteProduct(e);

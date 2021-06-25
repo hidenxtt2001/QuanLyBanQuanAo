@@ -41,6 +41,7 @@
           <Property Name="payID" Type="int" Nullable="false" />
           <Property Name="resourcesID" Type="int" Nullable="false" />
           <Property Name="numberResources" Type="int" Nullable="false" />
+          <Property Name="sumPrice" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -59,30 +60,6 @@
           <Property Name="nameResources" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="price" Type="float" Nullable="false" />
         </EntityType>
-        <Association Name="FK_PaymentDetail_Payment">
-          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
-          <End Role="PaymentDetail" Type="Self.PaymentDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Payment">
-              <PropertyRef Name="payID" />
-            </Principal>
-            <Dependent Role="PaymentDetail">
-              <PropertyRef Name="payID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PaymentDetail_Resources">
-          <End Role="Resources" Type="Self.Resources" Multiplicity="1" />
-          <End Role="PaymentDetail" Type="Self.PaymentDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Resources">
-              <PropertyRef Name="resourcesID" />
-            </Principal>
-            <Dependent Role="PaymentDetail">
-              <PropertyRef Name="resourcesID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ShoppingClothModelStoreContainer">
           <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BillDetail" EntityType="Self.BillDetail" Schema="dbo" store:Type="Tables" />
@@ -90,14 +67,6 @@
           <EntitySet Name="PaymentDetail" EntityType="Self.PaymentDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Resources" EntityType="Self.Resources" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_PaymentDetail_Payment" Association="Self.FK_PaymentDetail_Payment">
-            <End Role="Payment" EntitySet="Payment" />
-            <End Role="PaymentDetail" EntitySet="PaymentDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PaymentDetail_Resources" Association="Self.FK_PaymentDetail_Resources">
-            <End Role="Resources" EntitySet="Resources" />
-            <End Role="PaymentDetail" EntitySet="PaymentDetail" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -145,6 +114,7 @@
           <Property Name="numberResources" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Payment" Relationship="Self.FK_PaymentDetail_Payment" FromRole="PaymentDetail" ToRole="Payment" />
           <NavigationProperty Name="Resource" Relationship="Self.FK_PaymentDetail_Resources" FromRole="PaymentDetail" ToRole="Resources" />
+          <Property Name="sumPrice" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -277,6 +247,7 @@
           <EntitySetMapping Name="PaymentDetails">
             <EntityTypeMapping TypeName="ShoppingClothModel.PaymentDetail">
               <MappingFragment StoreEntitySet="PaymentDetail">
+                <ScalarProperty Name="sumPrice" ColumnName="sumPrice" />
                 <ScalarProperty Name="payDetailID" ColumnName="payDetailID" />
                 <ScalarProperty Name="payID" ColumnName="payID" />
                 <ScalarProperty Name="resourcesID" ColumnName="resourcesID" />

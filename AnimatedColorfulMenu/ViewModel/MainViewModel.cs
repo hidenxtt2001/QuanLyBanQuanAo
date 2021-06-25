@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -13,11 +14,14 @@ namespace AnimatedColorfulMenu.ViewModel
 {
     class MainViewModel : BaseViewModel
     {
+        private int tempSeleted;
+
         private int _tabSelected;
         public int tabSelected
         {
             get => this._tabSelected; set
             {
+                tempSeleted = _tabSelected;
                 this._tabSelected = value;
                 OnPropertyChanged("tabSelected");
             }
@@ -36,9 +40,38 @@ namespace AnimatedColorfulMenu.ViewModel
 
         public ICommand tabSwitch { get; set; }
 
+        public ICommand loadData { get; set; }
+
         public MainViewModel()
         {
             products = new ObservableCollection<Product>();
+            loadData = new RelayCommand<MainWindow>((p) =>
+            {
+                return true;
+            }, (p) =>
+            {
+                if (tempSeleted != tabSelected)
+                {
+                    switch (tabSelected)
+                    {
+                        case 0:
+                            ((MainViewModel)p.main.DataContext).loadDataFunc();
+                            break;
+                        case 1:
+                            ((SanPhamViewModel)p.product.DataContext).loadDataFunc();
+                            break;
+                        case 2:
+                            ((PhieuChiViewModel)p.payment.DataContext).loadDataFunc();
+                            break;
+                        case 3:
+                            ((ThongKeViewModel)p.statistics.DataContext).loadDataFunc();
+                            break;
+                    }
+                    tempSeleted = tabSelected;
+                }
+
+
+            });
             tabSwitch = new RelayCommand<int>((p) =>
             {
                 return true;
@@ -47,6 +80,11 @@ namespace AnimatedColorfulMenu.ViewModel
                 tabSelected = p;
                 loadProduct();
             });
+            loadProduct();
+        }
+
+        public void loadDataFunc()
+        {
             loadProduct();
         }
 

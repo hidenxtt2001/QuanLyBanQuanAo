@@ -181,20 +181,29 @@
                         BorderThickness="0"
                         IsSynchronizedWithCurrentItem="True"
                         SelectedIndex="{Binding Path=tabSelected}">
-                <TabItem x:Name="main"
-                         DataContext="{Binding ElementName=formPanel, Path=DataContext}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding loadData, Source={StaticResource MainVM}}"
+                                               CommandParameter="{Binding ElementName=mainWindow}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <TabItem x:Name="main">
                     <local:LapHoaDon />
                 </TabItem>
                 <TabItem x:Name="product"
-                         DataContext="{Binding ElementName=formPanel, Path=DataContext}">
+                         DataContext="{StaticResource SanPhamVM}">
                     <local:SanPham />
                 </TabItem>
 
-                <TabItem x:Name="payment">
+                <TabItem x:Name="payment"
+                         DataContext="{StaticResource PhieuChiVM}">
                     <local:PhieuChi />
                 </TabItem>
-                <TabItem x:Name="statistics" />
-               
+                <TabItem x:Name="statistics"
+                         DataContext="{StaticResource ThongKeVM}">
+                    <local:ThongKe />
+                </TabItem>
+
 
 
             </TabControl>
@@ -219,15 +228,15 @@
                 <Image Height="140"
                        Source="/Assets/school-bag.png"
                        Stretch="Uniform" />
-                <ListView FontFamily="Champagne &amp; Limousines"
+                <ListView x:Name="listTab"
+                          FontFamily="Champagne &amp; Limousines"
                           FontSize="18"
                           Foreground="#FF313131"
-                          x:Name="listTab"
                           Tag="main">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding tabSwitch}"
-                                                   CommandParameter="{Binding ElementName=listTab,Path=SelectedIndex}" />
+                                                   CommandParameter="{Binding ElementName=listTab, Path=SelectedIndex}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                     <ListViewItem Padding="0"

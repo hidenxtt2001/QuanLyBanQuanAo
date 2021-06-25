@@ -64,12 +64,14 @@
                 </materialDesign:PackIcon>
             </Button>
 
+
             <TextBlock Grid.Column="1"
+                       x:Name="numberResourcess"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="15"
                        Foreground="Black"
-                       Text="{Binding ElementName=PhieuChiSelf, Path=numberR ,UpdateSourceTrigger=PropertyChanged}" />
+                       Text="{Binding ElementName=PhieuChiSelf, Path=numberR}" />
             <Button x:Name="plus"
                     Grid.Column="2"
                     Padding="0"
@@ -88,11 +90,11 @@
 
 
         </Grid>
-        <TextBlock x:Name="pricePrduct"
+        <TextBlock x:Name="priceResource"
                    Grid.Column="2"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Center"
                    FontSize="15"
-                   Text="{Binding   ElementName=PhieuChiSelf, Path=sumPriceR,StringFormat={}{0} VNĐ ,UpdateSourceTrigger=PropertyChanged}" />
+                   Text="{Binding   ElementName=PhieuChiSelf, Path=sumPriceR,StringFormat={}{0} VNĐ }" />
     </Grid>
 </UserControl>

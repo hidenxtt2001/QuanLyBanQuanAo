@@ -39,7 +39,6 @@ namespace AnimatedColorfulMenu.Utils
 
         public static readonly DependencyProperty numberProduct = DependencyProperty.Register("number", typeof(int), typeof(BillItem));
 
-
         public double sumPrice
         {
             get { return (double)GetValue(sumPriceProduct); }

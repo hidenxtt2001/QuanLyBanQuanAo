@@ -62,6 +62,7 @@
                             Margin="15,10,15,8"
                             materialDesign:ButtonAssist.CornerRadius="15"
                             materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                            Command="{Binding themPhieuChi,UpdateSourceTrigger=PropertyChanged}"
                             Background="BlueViolet"
                             BorderThickness="0">
                         <TextBlock Text="Thêm Phiếu Chi" />
@@ -74,6 +75,7 @@
                             Margin="15,10,15,8"
                             materialDesign:ButtonAssist.CornerRadius="15"
                             materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                            Command="{Binding xoaPhieuChi,UpdateSourceTrigger=PropertyChanged}"
                             Background="White"
                             BorderThickness="0"
                             Foreground="Gray">
@@ -87,7 +89,8 @@
                           VerticalContentAlignment="Stretch"
                           VerticalScrollBarVisibility="Auto">
 
-                <ItemsControl ItemsSource="{Binding phieuChiItems}">
+                <ItemsControl ItemsSource="{Binding phieuChiItems}"
+                              x:Name="listPhieuChi">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Vertical" />
@@ -95,7 +98,7 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <local:PhieuChiItem resourcePhieuChi="{Binding resourcePhieuChi}" />
+                            <local:PhieuChiItem resourcePhieuChi="{Binding  resourcePhieuChi}" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

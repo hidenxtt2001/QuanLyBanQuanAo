@@ -218,6 +218,7 @@
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataProvider.cs" />
+    <Compile Include="Model\PassThroughConverter.cs" />
     <Compile Include="Model\Payment.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
@@ -265,6 +266,7 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PhieuChiViewModel.cs" />
     <Compile Include="ViewModel\SanPhamViewModel.cs" />
+    <Compile Include="ViewModel\ThongKeViewModel.cs" />
     <Compile Include="View\LapHoaDon.xaml.cs">
       <DependentUpon>LapHoaDon.xaml</DependentUpon>
     </Compile>
@@ -276,6 +278,9 @@
     </Compile>
     <Compile Include="View\SanPham.xaml.cs">
       <DependentUpon>SanPham.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ThongKe.xaml.cs">
+      <DependentUpon>ThongKe.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\MainResource.xaml">
       <SubType>Designer</SubType>
@@ -318,6 +323,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SanPham.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ThongKe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

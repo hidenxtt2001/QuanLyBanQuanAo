@@ -18,6 +18,7 @@ namespace AnimatedColorfulMenu.Model
         public int payID { get; set; }
         public int resourcesID { get; set; }
         public int numberResources { get; set; }
+        public double sumPrice { get; set; }
     
         public virtual Payment Payment { get; set; }
         public virtual Resource Resource { get; set; }

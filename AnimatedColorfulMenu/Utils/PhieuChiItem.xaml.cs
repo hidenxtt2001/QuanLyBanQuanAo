@@ -33,30 +33,40 @@ namespace AnimatedColorfulMenu.Utils
             }
         }
 
-        public static readonly DependencyProperty itemPhieuChi = DependencyProperty.Register("resourcePhieuChi", typeof(Resource), typeof(PhieuChiItem));
+        public static readonly DependencyProperty itemPhieuChi = DependencyProperty.Register("resourcePhieuChi", typeof(Resource), typeof(PhieuChiItem), new FrameworkPropertyMetadata
+        {
+            BindsTwoWayByDefault = true,
+        });
 
 
         public int numberR
         {
             get { return (int)GetValue(numberResource); }
-            set { SetValue(numberResource, value); }
+            set { SetValue(numberResource, value); numberResourcess.Text = value.ToString(); }
         }
 
-        public static readonly DependencyProperty numberResource = DependencyProperty.Register("numberPhieuChi", typeof(int), typeof(PhieuChiItem));
+        public static readonly DependencyProperty numberResource = DependencyProperty.Register("numberPhieuChi", typeof(int), typeof(PhieuChiItem), new FrameworkPropertyMetadata
+        {
+            BindsTwoWayByDefault = true,
+        });
 
 
         public double sumPriceR
         {
             get { return (double)GetValue(sumPriceResource); }
-            set { SetValue(sumPriceResource, value); }
+            set { SetValue(sumPriceResource, value); priceResource.Text = string.Format("{0} VNĐ", value); }
         }
 
-        public static readonly DependencyProperty sumPriceResource = DependencyProperty.Register("sumPricePhieuChi", typeof(double), typeof(PhieuChiItem));
+        public static readonly DependencyProperty sumPriceResource = DependencyProperty.Register("sumPricePhieuChi", typeof(double), typeof(PhieuChiItem), new FrameworkPropertyMetadata
+        {
+            BindsTwoWayByDefault = true,
+        });
 
         public PhieuChiItem()
         {
 
             InitializeComponent();
+            this.DataContext = this;
             sumPriceR = 0;
             numberR = 1;
         }

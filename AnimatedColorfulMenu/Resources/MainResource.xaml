@@ -1,11 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AnimatedColorfulMenu.Resources"
-                    xmlns:viewmodel="clr-namespace:AnimatedColorfulMenu.ViewModel">
+                    xmlns:viewmodel="clr-namespace:AnimatedColorfulMenu.ViewModel"
+                    xmlns:model="clr-namespace:AnimatedColorfulMenu.Model">
     <viewmodel:MainViewModel x:Key="MainVM" />
     <viewmodel:SanPhamViewModel x:Key="SanPhamVM" />
     <viewmodel:LapHoaDonViewModel x:Key="LapHoaDonVM" />
     <viewmodel:PhieuChiViewModel x:Key="PhieuChiVM" />
-
-
+    <viewmodel:ThongKeViewModel x:Key="ThongKeVM" />
+    <model:PassThroughConverter x:Key="PassConvert" />
 </ResourceDictionary>
