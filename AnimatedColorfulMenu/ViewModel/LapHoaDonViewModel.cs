@@ -125,7 +125,7 @@ namespace AnimatedColorfulMenu.ViewModel
 
                     foreach (var i in billItems)
                     {
-                        BillDetail billDetail = new BillDetail() { billID = bill.billID, numberProduct = i.number, productID = i.productBill.productID };
+                        BillDetail billDetail = new BillDetail() { billID = bill.billID, numberProduct = i.number, productID = i.productBill.productID, sumPrice = i.sumPrice };
                         DataProvider.Ins.DB.BillDetails.Add(billDetail);
                     }
 

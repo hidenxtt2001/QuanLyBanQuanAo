@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ShoppingClothModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ShoppingClothModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bill">
           <Key>
             <PropertyRef Name="billID" />
@@ -23,6 +23,7 @@
           <Property Name="billID" Type="int" Nullable="false" />
           <Property Name="productID" Type="int" Nullable="false" />
           <Property Name="numberProduct" Type="int" Nullable="false" />
+          <Property Name="sumPrice" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -58,30 +59,6 @@
           <Property Name="nameResources" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="price" Type="float" Nullable="false" />
         </EntityType>
-        <Association Name="FK_BillDetail_Bill">
-          <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
-          <End Role="BillDetail" Type="Self.BillDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Bill">
-              <PropertyRef Name="billID" />
-            </Principal>
-            <Dependent Role="BillDetail">
-              <PropertyRef Name="billID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BillDetail_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="BillDetail" Type="Self.BillDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="productID" />
-            </Principal>
-            <Dependent Role="BillDetail">
-              <PropertyRef Name="productID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PaymentDetail_Payment">
           <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
           <End Role="PaymentDetail" Type="Self.PaymentDetail" Multiplicity="*" />
@@ -113,14 +90,6 @@
           <EntitySet Name="PaymentDetail" EntityType="Self.PaymentDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Resources" EntityType="Self.Resources" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_BillDetail_Bill" Association="Self.FK_BillDetail_Bill">
-            <End Role="Bill" EntitySet="Bill" />
-            <End Role="BillDetail" EntitySet="BillDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BillDetail_Product" Association="Self.FK_BillDetail_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="BillDetail" EntitySet="BillDetail" />
-          </AssociationSet>
           <AssociationSet Name="FK_PaymentDetail_Payment" Association="Self.FK_PaymentDetail_Payment">
             <End Role="Payment" EntitySet="Payment" />
             <End Role="PaymentDetail" EntitySet="PaymentDetail" />
@@ -130,8 +99,7 @@
             <End Role="PaymentDetail" EntitySet="PaymentDetail" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ShoppingClothModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -156,6 +124,7 @@
           <Property Name="numberProduct" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Bill" Relationship="Self.FK_BillDetail_Bill" FromRole="BillDetail" ToRole="Bill" />
           <NavigationProperty Name="Product" Relationship="Self.FK_BillDetail_Product" FromRole="BillDetail" ToRole="Product" />
+          <Property Name="sumPrice" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -288,6 +257,7 @@
           <EntitySetMapping Name="BillDetails">
             <EntityTypeMapping TypeName="ShoppingClothModel.BillDetail">
               <MappingFragment StoreEntitySet="BillDetail">
+                <ScalarProperty Name="sumPrice" ColumnName="sumPrice" />
                 <ScalarProperty Name="billDetailID" ColumnName="billDetailID" />
                 <ScalarProperty Name="billID" ColumnName="billID" />
                 <ScalarProperty Name="productID" ColumnName="productID" />

@@ -5,7 +5,7 @@
     <viewmodel:MainViewModel x:Key="MainVM" />
     <viewmodel:SanPhamViewModel x:Key="SanPhamVM" />
     <viewmodel:LapHoaDonViewModel x:Key="LapHoaDonVM" />
-
+    <viewmodel:PhieuChiViewModel x:Key="PhieuChiVM" />
 
 
 </ResourceDictionary>

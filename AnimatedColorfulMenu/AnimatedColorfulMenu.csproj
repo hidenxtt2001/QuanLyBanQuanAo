@@ -248,21 +248,31 @@
     <Compile Include="Utils\BillItem.xaml.cs">
       <DependentUpon>BillItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\PhieuChiItem.xaml.cs">
+      <DependentUpon>PhieuChiItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\ProductItem.xaml.cs">
       <DependentUpon>ProductItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\ThanhToanBill.xaml.cs">
       <DependentUpon>ThanhToanBill.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ThemChiPhieu.xaml.cs">
+      <DependentUpon>ThemChiPhieu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\LapHoaDonViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\PhieuChiViewModel.cs" />
     <Compile Include="ViewModel\SanPhamViewModel.cs" />
     <Compile Include="View\LapHoaDon.xaml.cs">
       <DependentUpon>LapHoaDon.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PhieuChi.xaml.cs">
+      <DependentUpon>PhieuChi.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SanPham.xaml.cs">
       <DependentUpon>SanPham.xaml</DependentUpon>
@@ -279,6 +289,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Utils\PhieuChiItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Utils\ProductItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -287,11 +301,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Utils\ThemChiPhieu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\LapHoaDon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PhieuChi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

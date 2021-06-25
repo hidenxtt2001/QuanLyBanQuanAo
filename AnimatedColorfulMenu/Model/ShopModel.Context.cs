@@ -12,19 +12,19 @@ namespace AnimatedColorfulMenu.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    
     public partial class ShoppingClothEntities : DbContext
     {
         public ShoppingClothEntities()
             : base("name=ShoppingClothEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<BillDetail> BillDetails { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }

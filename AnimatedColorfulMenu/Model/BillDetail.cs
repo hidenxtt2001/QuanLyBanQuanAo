@@ -11,14 +11,15 @@ namespace AnimatedColorfulMenu.Model
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class BillDetail
     {
         public int billDetailID { get; set; }
         public int billID { get; set; }
         public int productID { get; set; }
         public int numberProduct { get; set; }
-
+        public double sumPrice { get; set; }
+    
         public virtual Bill Bill { get; set; }
         public virtual Product Product { get; set; }
     }
