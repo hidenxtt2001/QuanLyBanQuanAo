@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AnimatedColorfulMenu.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,7 @@ namespace AnimatedColorfulMenu.View
         {
             LoginActivity loginActivity = new LoginActivity();
             loginActivity.ShowDialog();
-
+            if (!LoginViewModel.loginSuccess) this.Close();
         }
 
         private void DockPanel_MouseDown(object sender, MouseButtonEventArgs e)
