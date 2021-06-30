@@ -121,14 +121,12 @@ namespace AnimatedColorfulMenu.ViewModel
                 try
                 {
                     var bill = new Bill() { dateCreate = DateTime.Now, nameCustomer = nameCustomer, phoneNumber = phoneNumber, sumPrice = sum };
-                    DataProvider.Ins.DB.Bills.Add(bill);
-
                     foreach (var i in billItems)
                     {
                         BillDetail billDetail = new BillDetail() { billID = bill.billID, numberProduct = i.number, productID = i.productBill.productID, sumPrice = i.sumPrice };
-                        DataProvider.Ins.DB.BillDetails.Add(billDetail);
+                        bill.BillDetails.Add(billDetail);
                     }
-
+                    DataProvider.Ins.DB.Bills.Add(bill);
                     DataProvider.Ins.DB.SaveChanges();
                     resetThanhToan();
                     MessageBox.Show("Thanh toán thành công");

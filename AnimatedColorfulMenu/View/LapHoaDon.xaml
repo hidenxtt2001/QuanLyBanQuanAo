@@ -24,7 +24,7 @@
                            FontWeight="Bold"
                            Foreground="BlueViolet"
                            Text="Sản phẩm" />
-                <ItemsControl ItemsSource="{Binding products,Source={StaticResource MainVM}}">
+                <ItemsControl ItemsSource="{Binding products, Source={StaticResource MainVM}}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel />
@@ -32,11 +32,7 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-
-
-                            <Utils:ProductItem product="{Binding}">
-
-                            </Utils:ProductItem>
+                            <Utils:ProductItem product="{Binding}" />
 
 
                         </DataTemplate>
@@ -46,8 +42,8 @@
         </ScrollViewer>
 
         <Border Grid.Column="1"
-                BorderThickness="2 0 0 0"
-                BorderBrush="LightGray">
+                BorderBrush="LightGray"
+                BorderThickness="2,0,0,0">
             <Utils:ThanhToanBill Loaded="ThanhToanBill_Loaded" />
         </Border>
 
