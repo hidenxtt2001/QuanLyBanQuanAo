@@ -43,6 +43,21 @@ namespace AnimatedColorfulMenu.View
             cmbMonth.SelectionChanged += CmbMonth_SelectionChanged;
             cmbYear.SelectionChanged += CmbYear_SelectionChanged;
 
+
+
+            cmbYearNext.ItemsSource = year;
+            cmbYearNext.SelectedItem = time.Year;
+
+            cmbMonthNext.ItemsSource = month;
+            cmbMonthNext.SelectedItem = DateTime.Today.Month;
+
+            resetDayNextInMonth();
+            cmbDayNext.SelectedItem = DateTime.Today.Day;
+
+
+            cmbMonthNext.SelectionChanged += CmbMonth_SelectionChanged;
+            cmbYearNext.SelectionChanged += CmbYear_SelectionChanged;
+
         }
 
         private void CmbYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -65,6 +80,30 @@ namespace AnimatedColorfulMenu.View
             day = Enumerable.Range(1, DateTime.DaysInMonth(tempYear, tempMonth)).ToList();
 
             cmbDay.ItemsSource = day;
+        }
+
+        private void CmbYearNext_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            resetDayNextInMonth();
+
+        }
+
+        private void CmbMonthNext_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            resetDayNextInMonth();
+        }
+
+        void resetDayNextInMonth()
+        {
+            List<int> day;
+
+            int tempYear = Convert.ToInt32(cmbYear.SelectedValue);
+            int tempMonth = Convert.ToInt32(cmbMonth.SelectedValue);
+
+            day = Enumerable.Range(1, DateTime.DaysInMonth(tempYear, tempMonth)).ToList();
+
+            cmbDayNext.ItemsSource = day;
         }
     }
 }

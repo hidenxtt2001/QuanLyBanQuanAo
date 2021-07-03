@@ -15,58 +15,118 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0"
-                    Margin="10"
-                    Orientation="Horizontal">
-            <ComboBox x:Name="cmbDay"
-                      Width="100"
-                      Margin="10,0"
-                      BorderBrush="BlueViolet"
-                      BorderThickness="2"
-                      FontSize="15"
-                      SelectedItem="{Binding day}"
-                      Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Tag="{Binding}"
-                                   Text="{Binding}" />
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
+        <Grid Grid.Row="0"
+              Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <ComboBox x:Name="cmbDay"
+                          Width="100"
+                          Margin="10,0"
+                          BorderBrush="BlueViolet"
+                          BorderThickness="2"
+                          FontSize="15"
+                          SelectedItem="{Binding day}"
+                          Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Tag="{Binding}"
+                                       Text="{Binding}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
 
-            </ComboBox>
-            <ComboBox x:Name="cmbMonth"
-                      Width="100"
-                      Margin="10,0"
-                      BorderBrush="BlueViolet"
-                      BorderThickness="2"
-                      FontSize="15"
-                      SelectedItem="{Binding month}"
-                      Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Tag="{Binding}"
-                                   Text="{Binding}" />
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox x:Name="cmbMonth"
+                          Width="100"
+                          Margin="10,0"
+                          BorderBrush="BlueViolet"
+                          BorderThickness="2"
+                          FontSize="15"
+                          SelectedItem="{Binding month}"
+                          Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Tag="{Binding}"
+                                       Text="{Binding}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
 
-            </ComboBox>
-            <ComboBox x:Name="cmbYear"
-                      Width="100"
-                      Margin="10,0"
-                      BorderBrush="BlueViolet"
-                      BorderThickness="2"
-                      FontSize="15"
-                      SelectedItem="{Binding year}"
-                      Style="{StaticResource MaterialDesignOutlinedComboBox}">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Tag="{Binding}"
-                                   Text="{Binding}" />
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox x:Name="cmbYear"
+                          Width="100"
+                          Margin="10,0"
+                          BorderBrush="BlueViolet"
+                          BorderThickness="2"
+                          FontSize="15"
+                          SelectedItem="{Binding year}"
+                          Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Tag="{Binding}"
+                                       Text="{Binding}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
 
-            </ComboBox>
-        </StackPanel>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="1">
+                <ComboBox x:Name="cmbDayNext"
+                          Width="100"
+                          Margin="10,0"
+                          BorderBrush="BlueViolet"
+                          BorderThickness="2"
+                          FontSize="15"
+                          SelectedItem="{Binding dayNext}"
+                          Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Tag="{Binding}"
+                                       Text="{Binding}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+
+                </ComboBox>
+                <ComboBox x:Name="cmbMonthNext"
+                          Width="100"
+                          Margin="10,0"
+                          BorderBrush="BlueViolet"
+                          BorderThickness="2"
+                          FontSize="15"
+                          SelectedItem="{Binding monthNext}"
+                          Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Tag="{Binding}"
+                                       Text="{Binding}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+
+                </ComboBox>
+                <ComboBox x:Name="cmbYearNext"
+                          Width="100"
+                          Margin="10,0"
+                          BorderBrush="BlueViolet"
+                          BorderThickness="2"
+                          FontSize="15"
+                          SelectedItem="{Binding yearNext}"
+                          Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Tag="{Binding}"
+                                       Text="{Binding}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+
+
+
+
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />

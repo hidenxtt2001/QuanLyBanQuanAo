@@ -116,6 +116,38 @@ namespace AnimatedColorfulMenu.ViewModel
             }
         }
 
+        private int _dayNext;
+        public int dayNext
+        {
+            get => this._dayNext; set
+            {
+                this._dayNext = value;
+                loadDataFunc();
+                OnPropertyChanged();
+            }
+        }
+
+        private int _monthNext;
+        public int monthNext
+        {
+            get => this._monthNext; set
+            {
+                this._monthNext = value;
+                loadDataFunc();
+                OnPropertyChanged();
+            }
+        }
+
+        private int _yearNext;
+        public int yearNext
+        {
+            get => this._yearNext; set
+            {
+                this._yearNext = value;
+                loadDataFunc();
+                OnPropertyChanged();
+            }
+        }
 
 
         #endregion
@@ -128,7 +160,8 @@ namespace AnimatedColorfulMenu.ViewModel
             {
 
                 var date = DateTime.Parse(string.Format("{0}/{1}/{2} 0:00 AM", month, day, year));
-                var k = DataProvider.Ins.DB.Payments.Where(t => t.dateCreate >= date).ToList();
+                var dateNext = DateTime.Parse(string.Format("{0}/{1}/{2} 23:59 PM", monthNext, dayNext, yearNext));
+                var k = DataProvider.Ins.DB.Payments.Where(t => t.dateCreate >= date && t.dateCreate <= dateNext).ToList();
                 foreach (Payment i in k)
                 {
                     tongchi += i.sumPrice;
@@ -150,7 +183,8 @@ namespace AnimatedColorfulMenu.ViewModel
             try
             {
                 var date = DateTime.Parse(string.Format("{0}/{1}/{2} 0:00 AM", month, day, year));
-                var k = DataProvider.Ins.DB.Bills.Where(t => t.dateCreate >= date).ToList();
+                var dateNext = DateTime.Parse(string.Format("{0}/{1}/{2} 23:59 PM", monthNext, dayNext, yearNext));
+                var k = DataProvider.Ins.DB.Bills.Where(t => t.dateCreate >= date && t.dateCreate <= dateNext).ToList();
                 foreach (Bill i in k)
                 {
                     tongthu += i.sumPrice;
