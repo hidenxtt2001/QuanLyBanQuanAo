@@ -59,6 +59,12 @@
         <StackPanel Grid.Column="1"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Text="Nhấp vào bên dưới để chọn hình"
+                       Margin="10" />
             <Border Width="230"
                     Height="300"
                     BorderBrush="Black"
@@ -82,7 +88,8 @@
 
             <StackPanel MaxWidth="300"
                         Margin="20">
-                <TextBox Name="productName"
+
+                <TextBox x:Name="productName"
                          MinWidth="250"
                          Margin="10"
                          Padding="15"
@@ -98,7 +105,7 @@
                          Foreground="White"
                          SelectionBrush="BlueViolet"
                          Text="{Binding NameProduct, Mode=TwoWay}" />
-                <TextBox Name="productPrice"
+                <TextBox x:Name="productPrice"
                          MinWidth="250"
                          Margin="10"
                          Padding="15"
