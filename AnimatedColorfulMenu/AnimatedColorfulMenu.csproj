@@ -271,6 +271,7 @@
     <Compile Include="ViewModel\PhieuChiViewModel.cs" />
     <Compile Include="ViewModel\SanPhamViewModel.cs" />
     <Compile Include="ViewModel\ThongKeViewModel.cs" />
+    <Compile Include="ViewModel\UpdateProductViewModel.cs" />
     <Compile Include="View\LapHoaDon.xaml.cs">
       <DependentUpon>LapHoaDon.xaml</DependentUpon>
     </Compile>
@@ -288,6 +289,9 @@
     </Compile>
     <Compile Include="View\ThongKe.xaml.cs">
       <DependentUpon>ThongKe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UpdateProduct.xaml.cs">
+      <DependentUpon>UpdateProduct.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\MainResource.xaml">
       <SubType>Designer</SubType>
@@ -338,6 +342,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ThongKe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UpdateProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

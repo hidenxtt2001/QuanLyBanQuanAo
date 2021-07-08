@@ -9,5 +9,6 @@
     <viewmodel:PhieuChiViewModel x:Key="PhieuChiVM" />
     <viewmodel:ThongKeViewModel x:Key="ThongKeVM" />
     <viewmodel:LoginViewModel x:Key="LoginVM" />
+    <viewmodel:UpdateProductViewModel x:Key="UpdateVM"/>
     <model:PassThroughConverter x:Key="PassConvert" />
 </ResourceDictionary>

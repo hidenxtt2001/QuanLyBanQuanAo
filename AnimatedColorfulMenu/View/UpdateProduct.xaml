@@ -1,77 +1,25 @@
-﻿<UserControl x:Class="AnimatedColorfulMenu.View.SanPham"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:AnimatedColorfulMenu="clr-namespace:AnimatedColorfulMenu"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-             xmlns:local="clr-namespace:AnimatedColorfulMenu.View"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             Name="SanPhamUserControl"
-             DataContext="{StaticResource SanPhamVM}"
-             
-             mc:Ignorable="d">
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding setupSanPham}" CommandParameter="{Binding ElementName=SanPhamUserControl}" />
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
+﻿<Window x:Class="AnimatedColorfulMenu.View.UpdateProduct"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnimatedColorfulMenu.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        DataContext="{StaticResource UpdateVM}"
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="SingleBorderWindow"
+        Title="UpdateProduct" Height="723.861" Width="459.786">
     <Grid>
-        <i:Interaction.Triggers>
-            <i:EventTrigger EventName="IsVisibleChanged">
-                <i:InvokeCommandAction Command="" />
-            </i:EventTrigger>
-        </i:Interaction.Triggers>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition Width="400" />
         </Grid.ColumnDefinitions>
-        <DataGrid Name="dataView"
-                  Grid.Column="0"
-                  AutoGenerateColumns="False"
-                  BorderBrush="BlueViolet"
-                  BorderThickness="4"
-                  IsReadOnly="True"
-                  ItemsSource="{Binding products}"
-                  SelectionMode="Single">
-
-            <DataGrid.ContextMenu>
-                <ContextMenu Name="contextMenu">
-                    <MenuItem Command="{Binding suaProduct}"
-                              CommandParameter="{Binding Path=PlacementTarget.SelectedItem, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"
-                              Header="Sửa sản phẩm" />
-                    <MenuItem Command="{Binding xoaProduct}"
-                              CommandParameter="{Binding Path=PlacementTarget.SelectedItem, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"
-                              Header="Xoá sản phẩm" />
-                    
-                </ContextMenu>
-            </DataGrid.ContextMenu>
-            <DataGrid.Resources>
-                <Style TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="HorizontalContentAlignment"
-                            Value="Center" />
-                </Style>
-
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding productID}"
-                                    Header="Mã sản phẩm" />
-                <DataGridTextColumn Width="*"
-                                    Binding="{Binding productName}"
-                                    Header="Tên sản phẩm" />
-                <DataGridTextColumn Width="*"
-                                    Binding="{Binding price}"
-                                    Header="Giá" />
-
-            </DataGrid.Columns>
-
-        </DataGrid>
-        <StackPanel Grid.Column="1"
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
-            <TextBlock  x:Name="updateVMT"
-                HorizontalAlignment="Center"
-                       DataContext="{StaticResource UpdateVM}"
+            <TextBlock HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="20"
                        FontWeight="Bold"
@@ -144,10 +92,9 @@
                         Background="BlueViolet"
                         BorderThickness="0"
                         Command="{Binding themProduct}"
-                        CommandParameter="{Binding ElementName=SanPhamUserControl}"
                         Content="THÊM"
                         FontSize="18" />
             </StackPanel>
         </StackPanel>
     </Grid>
-</UserControl>
+</Window>
