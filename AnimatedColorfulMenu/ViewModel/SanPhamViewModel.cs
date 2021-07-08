@@ -81,7 +81,11 @@ namespace AnimatedColorfulMenu.ViewModel
                 return p != null;
             }, (p) =>
             {
-                RemoveProduct(p);
+                if(MessageBox.Show("Bạn có muốn xóa sản phẩm?", "Thông báo!", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    RemoveProduct(p);
+                }
+                
             });
 
             suaProduct = new RelayCommand<Product>((p) => { return true; }, (p) => {

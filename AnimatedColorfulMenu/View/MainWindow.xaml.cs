@@ -43,7 +43,11 @@ namespace AnimatedColorfulMenu.View
 
         private void CloseForm_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (MessageBox.Show("Bạn có muốn thoát khỏi hệ thống?", "Thông báo!", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                this.Close();
+            }
+            e.Handled = false;
         }
 
 

@@ -92,7 +92,7 @@
                         Background="BlueViolet"
                         BorderThickness="0"
                         Command="{Binding themProduct}"
-                        Content="THÊM"
+                        Content="Sửa thông tin sản phẩm"
                         FontSize="18" />
             </StackPanel>
         </StackPanel>
