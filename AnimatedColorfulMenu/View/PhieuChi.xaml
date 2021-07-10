@@ -78,7 +78,7 @@
                     Background="BlueViolet"
                     BorderThickness="0"
                     Command="{Binding addResource , UpdateSourceTrigger=PropertyChanged}">
-                <TextBlock Text="Thêm Phiếu Chi" />
+                <TextBlock Text="Thêm Sản Phẩm" />
             </Button>
 
         </StackPanel>
