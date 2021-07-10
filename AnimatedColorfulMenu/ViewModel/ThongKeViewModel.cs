@@ -37,8 +37,7 @@ namespace AnimatedColorfulMenu.ViewModel
         {
             payments = new ObservableCollection<Payment>();
             bills = new ObservableCollection<Bill>();
-            loadPayment();
-            loadBill();
+            loadDataFunc();
         }
 
         public void loadDataFunc()
